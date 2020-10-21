@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Whale Hunter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Barlow' rel='stylesheet'>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Popular</h1>
+            <!-- TODO: fix image responsiveness -->
+            <div id="carousel-demo" class="carousel">
+                <div class="item-1">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-128x128">
+                                <figure class="image ">
+                                    <img
+                                        src="https://olsonkundig.com/wp-content/uploads/2015/05/08_08067_00_Georgetown_Brewing_Company_BB-1440x1079.jpg" />
+                                </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-2">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-128x128">
+                                <img
+                                    src="https://img.theculturetrip.com/wp-content/uploads/2018/04/18470213249_27afe9ec0d_k.jpg" />
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-3">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-128x128">
+                                <img
+                                    src="https://losangeles.cbslocal.com/wp-content/uploads/sites/14984641/2017/05/anheuser.jpg?w=1024&h=576&crop=1" />
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-4">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-128x128">
+                                <img
+                                    src="https://sierranevada.com/wp-content/uploads/2019/02/sierra-nevada-chico-01.jpg" />
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ///////////////////////// Trending 6 pack container/////////////////////////////// -->
+    <section>
+        <div class="container m-3">
+            <h1 class="title">Trending</h1>
+            <div class="tile is-ancestor columns is-mobile">
+                <div class="tile is-parent column">
+                    <article class="tile is-child box">
+
+                        <figure class="image is-4by3">
+                            <img src="https://mennohenselmans.com/wp-content/uploads/2014/02/Beer-belly-six-pack.bmp">
+                        </figure>
+                        <p class="subtitle">Six Pack 1</p>
+                        <p class="subtitle">4.7/5</p>
+                    </article>
+                </div>
+                <div class="tile is-parent column">
+                    <article class="tile is-child box">
+
+                        <figure class="image is-4by3">
+                            <img src="https://mennohenselmans.com/wp-content/uploads/2014/02/Beer-belly-six-pack.bmp">
+                        </figure>
+                        <p class="subtitle">Six Pack 2</p>
+                        <p class="subtitle">4.7/5</p>
+                    </article>
+                </div>
+            </div>
+            <div class="tile is-ancestor columns is-mobile">
+                <div class="tile is-parent column">
+                    <article class="tile is-child box">
+
+                        <figure class="image is-4by3">
+                            <img src="https://mennohenselmans.com/wp-content/uploads/2014/02/Beer-belly-six-pack.bmp">
+                        </figure>
+                        <p class="subtitle">Six Pack 3</p>
+                        <p class="subtitle">4.7/5</p>
+                    </article>
+                </div>
+                <div class="tile is-parent column">
+                    <article class="tile is-child box">
+
+                        <figure class="image is-4by3">
+                            <img src="https://mennohenselmans.com/wp-content/uploads/2014/02/Beer-belly-six-pack.bmp">
+                        </figure>
+                        <p class="subtitle">Six Pack 4</p>
+                        <p class="subtitle">4.7/5</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+    <script>
+        bulmaCarousel.attach('#carousel-demo', {
+            slidesToScroll: 1,
+            slidesToShow: 4
+        });
+    </script>
+</body>
+
+</html>

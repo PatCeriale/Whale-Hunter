@@ -1,12 +1,17 @@
 body {
   background-color: white;
-  height: 100vh
+  height: 100vh;
+  font-family: "Barlow";
 }
 
-.beer-detail-container{
+.beer-detail-container {
   height: 80vh;
 }
 .beer-content {
   margin-top: 45vh;
-  opacity: .95;
+  opacity: 0.95;
+}
+
+.carousel {
+  overflow: hidden;
 }
