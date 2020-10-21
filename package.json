@@ -21,6 +21,7 @@
     "bulma": "^0.9.1",
     "bulma-carousel": "^4.0.4",
     "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
     "handlebars": "^4.7.6",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
