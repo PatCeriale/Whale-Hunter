@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Whale Hunter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
+    <!-- <link rel="stylesheet" href="./public/css/style.css"> -->
+</head>
+
+<body>
+
+    <body>
+        <section class="section">
+            <div class="container">
+                <!-- Start Carousel -->
+                <div id="carousel-demo" class="carousel">
+                    <div class="item-1">
+                        <p>Hello world</p>
+                        <!-- Slide Content -->
+                    </div>
+                    <div class="item-2">
+                        <p>Hello worlds</p>
+                        <!-- Slide Content -->
+                    </div>
+                    <div class="item-3">
+                        <p>Hello worldz</p>
+                        <!-- Slide Content -->
+                    </div>
+                </div>
+                <!-- End Carousel -->
+            </div>
+        </section>
+        <!-- ///////////////////////// Trending 6 pack container/////////////////////////////// -->
+        <div class="container"></div>
+        <h1 class="title">Trending</h1>
+        <div class="tile is-ancestor">
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/640x480.png">
+                    </figure>
+                    <p class="title">Six Pack</p>
+                    <p class="subtitle">4.7/5</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/640x480.png">
+                    </figure>
+                    <p class="title">Six Pack</p>
+                    <p class="subtitle">4.7/5</p>
+                </article>
+            </div>
+        </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!-- <script type="text/javascript"
+        src="/node_modules/bulma-extensions/bulma-carousel/dist/bulma-carousel.min.js"></script> -->
+        <script defer src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+        <script src="./mainpage.js"></script>
+        <script>
+            bulmaCarousel.attach('#carousel-demo', {
+                slidesToScroll: 1,
+                slidesToShow: 4
+            });
+        </script>
+    </body>
+
+</html>
