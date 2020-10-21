@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var SixPack = sequalize.define("SixPack", {
+    var SixPack = sequelize.define("SixPack", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -12,16 +12,16 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: true
         },
         drink_date: {
-            type: DataTypes.DATETIME
+            type: DataTypes.DATE
         }
     })
 
     SixPack.associate = function (models) {
-        SixPack.belongsTo(models.beer, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
+        // SixPack.belongsTo(models.beer, {
+        //     foreignKey: {
+        //         allowNull: false
+        //     }
+        // });
         SixPack.belongsTo(models.Customer, {
             foreignKey: {
                 allowNull: false

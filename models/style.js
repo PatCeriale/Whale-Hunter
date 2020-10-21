@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Style = sequalize.define("Style", {
+    var Style = sequelize.define("Style", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,

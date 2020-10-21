@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Brewery = sequalize.define("Brewery", {
+    var Brewery = sequelize.define("Brewery", {
         brewery_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -16,15 +16,15 @@ module.exports = function (sequelize, DataTypes) {
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: flase
+            allowNull: false
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: flase
+            allowNull: false
         },
         zip_code: {
             type: DataTypes.STRING,
-            allowNull: flase
+            allowNull: false
         },
         phone: {
             type: DataTypes.INTEGER
@@ -34,12 +34,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         website: {
             type: DataTypes.STRING,
-            allowNull: flase
+            allowNull: false
         }
     })
 
     Brewery.associate = function (models) {
         Brewery.hasMany(models.Beer);
     };
-    return Beer;
+    return Brewery;
 }

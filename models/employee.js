@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Employee = sequalize.define("Employee", {
+    var Employee = sequelize.define("Employee", {
         user_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         last_name: {
             type: DataTypes.STRING,
-            allowNull: flase,
+            allowNull: false,
             validate: {
                 len: [1]
               }
@@ -38,16 +38,16 @@ module.exports = function (sequelize, DataTypes) {
         },
         website: {
             type: DataTypes.STRING,
-            allowNull: flase
+            allowNull: false
         }
     })
 
     Employee.associate = function (models) {
-        Employee.hasOne(models.role, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
+        // Employee.hasOne(models.role, {
+        //     foreignKey: {
+        //         allowNull: false
+        //     }
+        // });
     };
     return Employee;
 }
