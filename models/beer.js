@@ -1,11 +1,23 @@
 module.exports = function (sequelize, DataTypes) {
     var Beer = sequalize.define("Beer", {
+        sku: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        brewery_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
         description: {
             type: DataTypes.TEXT,
+            allowNull: false
+        },
+        style_id: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         abv: {
@@ -16,10 +28,17 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        rating_id: {
+        size: {
             type: DataTypes.INTEGER,
             allowNull: false
-            //TODO: foreign key to ratings table ID
+        },
+        picture: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        quantity: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     })
 
@@ -38,7 +57,7 @@ module.exports = function (sequelize, DataTypes) {
             foreignKey: {
                 allowNull: false
             }
-        })
+        });
     };
     return Beer;
 }
