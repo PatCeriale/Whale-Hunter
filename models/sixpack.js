@@ -12,16 +12,16 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: true
         },
         drink_date: {
-            type: DataTypes.DATETIME
+            type: DataTypes.DATE
         }
     })
 
     SixPack.associate = function (models) {
-        SixPack.belongsTo(models.beer, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
+        // SixPack.belongsTo(models.beer, {
+        //     foreignKey: {
+        //         allowNull: false
+        //     }
+        // });
         SixPack.belongsTo(models.Customer, {
             foreignKey: {
                 allowNull: false
