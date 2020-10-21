@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Rating = sequalize.define("Rating", {
+    var Rating = sequelize.define("Rating", {
         name: {
             type: DataTypes.INTEGER,
             allowNull: false,
