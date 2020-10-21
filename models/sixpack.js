@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var SixPack = sequalize.define("SixPack", {
+    var SixPack = sequelize.define("SixPack", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
