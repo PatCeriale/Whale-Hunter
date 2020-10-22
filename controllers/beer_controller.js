@@ -13,8 +13,7 @@ router.get("/beers", function(req, res) {
       const dbBeersJson = dbBeers.map(beer=>beer.toJSON());
       var hbsObject = { beer: dbBeersJson };
       console.log("Beer hbsObject", hbsObject);
-      return res.json(hbsObject);
-    //   return res.render("index", hbsObject);
+      return res.render("index", hbsObject);
     });
 });
 
