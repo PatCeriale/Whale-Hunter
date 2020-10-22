@@ -13,8 +13,7 @@ router.get("/beers", function (req, res) {
       const dbBeersJson = dbBeers.map(beer => beer.toJSON());
       var hbsObject = { beer: dbBeersJson };
       console.log("Beer hbsObject", hbsObject);
-      return res.json(hbsObject);
-      //   return res.render("index", hbsObject);
+      return res.render("index", hbsObject);
     });
 });
 
@@ -49,6 +48,11 @@ router.put("/beers/update/:id", function (req, res) {
 router.get('/breweries', function (req, res) {
   db.Brewery.findAll().then(brewery => {
     res.json(brewery)
+    const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
+    var hbsObject = { brewery: dbBreweryJson };
+    console.log(hbsObject)
+    return res.json(hbsObject);
+    // return res.render("index", hbsObject);
   })
 })
 
@@ -131,12 +135,57 @@ router.delete("/breweries/:id",function(req,res){
     if(deleteBrewery===0){
       res.status(404).json(deleteBrewery)
     } else {
-      res.json(deleteBrewery)
-    const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
-    var hbsObject = { brewery: dbBreweryJson };
+      //TODO:We need to add the page to redirect to here
+      res.redirect("/");
+    }
+  }).catch(err=>{
+    console.log(err);
+    res.status(500).json(err);
+  })
+})
+
+//================================================================================
+//Styles Routes
+//================================================================================
+
+//Get all styles from the DB
+router.get('/style', function (req, res) {
+  db.Style.findAll().then(style => {
+    res.json(style)
+    const dbStyleJson = style.map(style => style.toJSON());
+    var hbsObject = { style: dbStyleJson };
     console.log(hbsObject)
     return res.json(hbsObject);
     // return res.render("index", hbsObject);
+  })
+})
+
+//create new style
+router.post('/style/', function (req, res) {
+  db.Style.create({
+    name: req.body.name,
+    description: req.body.description
+  }).then(newStyle => {
+    console.log(newStyle)
+   res.redirect("/style");
+  }).catch(err => {
+    console.log(err)
+    res.status(500).json(err);
+  })
+})
+
+//Delete Style
+router.delete("/style/:id",function(req,res){
+  db.Style.destroy({
+    where:{
+      id:req.params.id
+    }
+  }).then(deleteStyle=>{
+    if(deleteStyle===0){
+      res.status(404).json(deleteStyle)
+    } else {
+      //TODO:We need to add the page to redirect to here
+      res.redirect("/");
     }
   }).catch(err=>{
     console.log(err);
