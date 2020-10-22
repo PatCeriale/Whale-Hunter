@@ -7,7 +7,7 @@ $(document).ready(function () {
   });
 });
 
-// $(".navbar").append(`
+// $(".whale").append(`
 //   <div class="image-cropper">
 //   <img class="whalez" src="https://i.pinimg.com/originals/6f/20/39/6f2039da60d44bd4af2976367e4e35be.jpg"
 // alt="whale bottle">
