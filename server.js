@@ -28,8 +28,10 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars")
 
 var routes = require("./controllers/beer_controller.js");
+const userPost_routes = require("./controllers/post_controller.js")
 
 app.use(routes);
+app.use(userPost_routes);
 
 var PORT = process.env.PORT || 8080;
 
