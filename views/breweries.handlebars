@@ -1,0 +1,24 @@
+
+{{#each brewery}}
+<section class="section">
+    <div class="container">
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="https://olsonkundig.com/wp-content/uploads/2015/05/08_08067_00_Georgetown_Brewing_Company_BB-1440x1079.jpg">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{this.brewery_name}}</strong> <small>{{this.city}},</small><small>{{this.state}}</small>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor
+              vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  {{/each}}
