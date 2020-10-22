@@ -47,12 +47,11 @@ router.put("/beers/update/:id", function (req, res) {
 //Get all breweries from the DB
 router.get('/breweries', function (req, res) {
   db.Brewery.findAll().then(brewery => {
-    res.json(brewery)
+    console.log(brewery);
     const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
     var hbsObject = { brewery: dbBreweryJson };
-    console.log(hbsObject)
-    return res.json(hbsObject);
-    // return res.render("index", hbsObject);
+    console.log("Brewery hbsObject", hbsObject);
+    return res.render("breweries", hbsObject);
   })
 })
 
