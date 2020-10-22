@@ -16,7 +16,22 @@ body {
   overflow: hidden;
 }
 
-.whalez {
+.image-cropper {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(37, 44, 51);
   margin-left: 50%;
   margin-right: 50%;
+}
+.whalez {
+  display: inline;
+  margin: 0 auto;
+  /* margin-left: -25%; */
+  height: 100%;
+  width: auto;
 }
