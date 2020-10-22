@@ -30,7 +30,7 @@ router.get("/beers/:id",function(req,res){
       }
   }).then(beer=>{
     res.json(beer)
-    const dbBreweryJson = beer.map(beer => beer.toJSON());
+    const dbBeerJson = beer.map(beer => beer.toJSON());
     var hbsObject = { beer: dbBeerJson };
     console.log(hbsObject)
     return res.json(hbsObject);
@@ -83,6 +83,22 @@ router.get('/breweries', function (req, res) {
         console.log("Brewery hbsObject", hbsObject);
         return res.render("breweries", hbsObject);
     })
+})
+
+//get all details about a single brewery
+router.get("/breweries/:id",function(req,res){
+  db.Brewery.findOne({
+      where:{
+          id:req.params.id
+      }
+  }).then(brewery=>{
+    res.json(brewery)
+    const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
+    var hbsObject = { brewery: dbBreweryJson };
+    console.log(hbsObject)
+    return res.json(hbsObject);
+    // return res.render("index", hbsObject);
+  })
 })
 
 //Get all breweries from the same city
