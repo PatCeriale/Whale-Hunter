@@ -15,3 +15,8 @@ body {
 .carousel {
   overflow: hidden;
 }
+
+.whalez {
+  margin-left: 50%;
+  margin-right: 50%;
+}
