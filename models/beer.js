@@ -1,23 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     var Beer = sequelize.define("Beer", {
-        sku: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        brewery_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
         description: {
             type: DataTypes.TEXT,
-            allowNull: false
-        },
-        style_id: {
-            type: DataTypes.INTEGER,
             allowNull: false
         },
         abv: {
@@ -27,35 +15,26 @@ module.exports = function (sequelize, DataTypes) {
         ibu: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        size: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        picture: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        quantity: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
     })
 
     Beer.associate = function (models) {
         Beer.belongsTo(models.Brewery, {
             foreignKey: {
-                allowNull: false
+                //TODO: Change back to false before deployment
+                allowNull: true
             }
         });
         Beer.belongsTo(models.Style, {
             foreignKey: {
-                allowNull: false
+                //TODO: Change back to false before deployment
+                allowNull: true
             }
         });
         Beer.belongsTo(models.Rating, {
             foreignKey: {
-                allowNull: false
+                //TODO: Change back to false before deployment
+                allowNull: true
             }
         });
     };

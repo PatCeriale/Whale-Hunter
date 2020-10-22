@@ -1,32 +1,33 @@
 module.exports = function (sequelize, DataTypes) {
-    var SixPack = sequelize.define("SixPack", {
+    var Sixpack = sequelize.define("Sixpack", {
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            //TODO: Change back to false before deployment
+            allowNull: true,
             validate: {
                 len: [1]
               }
-        },
-        drank: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
-        },
-        drink_date: {
-            type: DataTypes.DATE
         }
+        //Removing this feature to be added in if time is allowed
+        // drank: {
+        //     type: DataTypes.BOOLEAN,
+        //     defaultValue: true
+        // },
+        // drink_date: {
+        //     type: DataTypes.DATE
+        // }
     })
 
-    SixPack.associate = function (models) {
-        // SixPack.belongsTo(models.beer, {
-        //     foreignKey: {
-        //         allowNull: false
-        //     }
-        // });
-        SixPack.belongsTo(models.Customer, {
+    Sixpack.associate = function (models) {
+        Sixpack.belongsToMany(models.Beer, {
+            through:"sixPackBeer"
+        });
+        Sixpack.belongsTo(models.Customer, {
             foreignKey: {
-                allowNull: false
+                //TODO: Change back to false before deployment
+                allowNull: true
             }
         })
     };
-    return SixPack;
+    return Sixpack;
 }
