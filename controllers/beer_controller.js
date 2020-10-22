@@ -194,7 +194,7 @@ router.delete("/breweries/:id", function (req, res) {
 //================================================================================
 
 //Get all styles from the DB
-router.get('/style', function (req, res) {
+router.get('/styles', function (req, res) {
     db.Style.findAll().then(style => {
         res.json(style)
         const dbStyleJson = style.map(style => style.toJSON());
@@ -206,7 +206,7 @@ router.get('/style', function (req, res) {
 })
 
 //create new style
-router.post('/style/', function (req, res) {
+router.post('/styles/', function (req, res) {
     db.Style.create({
         name: req.body.name,
         description: req.body.description
@@ -220,7 +220,7 @@ router.post('/style/', function (req, res) {
 })
 
 //Delete Style
-router.delete("/style/:id", function (req, res) {
+router.delete("/styles/:id", function (req, res) {
     db.Style.destroy({
         where: {
             id: req.params.id
@@ -243,7 +243,7 @@ router.delete("/style/:id", function (req, res) {
 //================================================================================
 
 //Get all sixpacks from the DB
-router.get('/sixpack', function (req, res) {
+router.get('/sixpacks', function (req, res) {
     db.Sixpack.findAll().then(sixpack => {
         res.json(sixpack)
         const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
@@ -289,7 +289,7 @@ router.get("/sixpacks/:customer_id", function (req, res) {
 })
 
 //create new sixpack
-router.post('/sixpack', function (req, res) {
+router.post('/sixpacks', function (req, res) {
     console.log(req.body)
     db.Sixpack.create({
         //TODO:how do I get beer_id and customer_id as foreign keys to populate?
@@ -306,7 +306,7 @@ router.post('/sixpack', function (req, res) {
 })
 
 //Add a new beer to my sixpack
-router.put('/sixpack/:id', function (req, res) {
+router.put('/sixpacks/:id', function (req, res) {
     db.Sixpack.findOne({
         where: {
             id: req.params.id
@@ -325,7 +325,7 @@ router.put('/sixpack/:id', function (req, res) {
 })
 
 //Delete a beer in a sixpack
-router.delete("/sixpack/:id/:beer_id", function (req, res) {
+router.delete("/sixpacks/:id/:beer_id", function (req, res) {
     db.Sixpack.findOne({
         where: {
             id: req.params.id
@@ -344,7 +344,7 @@ router.delete("/sixpack/:id/:beer_id", function (req, res) {
 })
 
 //Delete entire Sixpack
-router.delete("/sixpack/:id", function (req, res) {
+router.delete("/sixpacks/:id", function (req, res) {
     db.Sixpack.destroy({
         where: {
             id: req.params.id
