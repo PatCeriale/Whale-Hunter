@@ -7,7 +7,7 @@ var db = require("../models/");
 //================================================================================
 //Basic redirect route. May change later.
 router.get("/", function (req, res) {
-    res.redirect("/beers");
+    res.redirect("/beer");
 });
 
 //Get all beer
@@ -22,6 +22,22 @@ router.get("/beers", function (req, res) {
         });
 });
 
+//get details for one beer
+router.get("/beers/:id",function(req,res){
+  db.Beer.findOne({
+      where:{
+          id:req.params.id
+      }
+  }).then(beer=>{
+    res.json(beer)
+    const dbBreweryJson = beer.map(beer => beer.toJSON());
+    var hbsObject = { beer: dbBeerJson };
+    console.log(hbsObject)
+    return res.json(hbsObject);
+    // return res.render("index", hbsObject);
+  })
+})
+
 //Create new beer
 router.post("/beers", function (req, res) {
     console.log(req.body.ibu);
@@ -35,6 +51,7 @@ router.post("/beers", function (req, res) {
         RatingID: req.body.RatingID
     }).then(function (dbBeer) {
         console.log(dbBeer);
+        res.json(dbBeer)
         res.redirect("/");
     });
 });
