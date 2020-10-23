@@ -41,17 +41,15 @@ router.get("/beers/:id", function (req, res) {
 router.post("/beers", function (req, res) {
     console.log(req.body.ibu);
     db.Beer.create({
-        BreweryID: req.body.BreweryID,
+        BreweryId: req.body.BreweryID,
         name: req.body.name,
         description: req.body.description,
-        StyleID: req.body.StyleID,
+        StyleId: req.body.StyleID,
         abv: req.body.abv,
-        ibu: req.body.ibu,
-        RatingID: req.body.RatingID
+        ibu: req.body.ibu
     }).then(function (dbBeer) {
         console.log(dbBeer);
         res.json(dbBeer)
-        res.redirect("/");
     });
 });
 //Does nothing yet
