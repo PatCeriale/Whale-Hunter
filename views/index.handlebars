@@ -1,41 +1,112 @@
 <section class="section">
-    <div class="container">
+    <div class="container is-clipped">
         <h1 class="title">Popular</h1>
-        <!-- TODO: fix image responsiveness -->
-        <div id="carousel-demo" class="carousel">
-            <div class="item-1">
-                <div class="card">
-                    <div class="card-image"
-                        style="background: url(https://olsonkundig.com/wp-content/uploads/2015/05/08_08067_00_Georgetown_Brewing_Company_BB-1440x1079.jpg); background-size: cover; width: 100%;">
-                        <figure class="image is-5by3">
-                        </figure>
+
+        <div id="slider">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://olsonkundig.com/wp-content/uploads/2015/05/08_08067_00_Georgetown_Brewing_Company_BB-1440x1079.jpg"
+                            alt="Georgetown Brewery" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="item__title">
+                        <a href="#">Georgetown Brewing Company</a>
+                    </div>
+                    <div class="item__description">
+                        Georgetown Brewing Company is the largest independent brewery in Washington State maker of
+                        many darn tasty beers, including Manny's Pale Ale. <br>
                     </div>
                 </div>
             </div>
-            <div class="item-2">
-                <div class="card">
-                    <div class="card-image"
-                        style="background: url(https://img.theculturetrip.com/wp-content/uploads/2018/04/18470213249_27afe9ec0d_k.jpg); background-size: cover; width: 100%;">
-                        <figure class="image is-5by3">
-                        </figure>
+
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://s3.us-west-2.amazonaws.com/stoupbrewing.com/202001/31/211741_710/img1.jpg"
+                            alt="" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="item__title">
+                        <a href="#">Stoup Brewing</a>
+                    </div>
+                    <div class="item__description">
+                        More than a family-friendly brewery, this a place that embraces the fundamental
+                        essence of beer: a means of bringing people together, one pint at a time. <br>
                     </div>
                 </div>
             </div>
-            <div class="item-3">
-                <div class="card">
-                    <div class="card-image"
-                        style="background: url(https://losangeles.cbslocal.com/wp-content/uploads/sites/14984641/2017/05/anheuser.jpg?w=1024&h=576&crop=1); background-size: cover; width: 100%;">
-                        <figure class="image is-5by3">
-                        </figure>
+
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://img.theculturetrip.com/wp-content/uploads/2018/04/18470213249_27afe9ec0d_k.jpg"
+                            alt="" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="item__title">
+                        <a href="#">Fremont Brewing Company</a>
+                    </div>
+                    <div class="item__description">
+                        We are a family-owned craft brewery founded in 2009 to brew small-batch artisan beers made
+                        with the best local ingredients we can find
                     </div>
                 </div>
             </div>
-            <div class="item-4">
-                <div class="card">
-                    <div class="card-image"
-                        style="background: url(https://sierranevada.com/wp-content/uploads/2019/02/sierra-nevada-chico-01.jpg); background-size: cover; width: 100%;">
-                        <figure class="image is-5by3">
-                        </figure>
+
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://www.whatcomtalk.com/wp-content/uploads/2014/02/chuckanut-bellingham.jpg"
+                            alt="" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="item__title">
+                        <a href="#">Chuckanut Brewery</a>
+                    </div>
+                    <div class="item__description">
+                        Brewing since 1984
+                        and are glad to bring guests their exceptional beer in both in Bellingham and Burlington, WA
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://www.chainlinebrew.com/Content/images/library/XCAQCEBE.png" alt="" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="item__title">
+                        <a href="#">Chainline Brewing Company</a>
+                    </div>
+                    <div class="item__description">
+                        Chainline Brewing Company was founded in 2014 with the singular goal of creating the highest
+                        quality ales and lagers
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image video-container is-16by9">
+                        <img src="https://craftpeak-commerce-images.imgix.net/2020/04/cloudburst-shop-hero-.jpg?auto=compress%2Cformat&ixlib=php-1.2.1"
+                            alt="">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="item__title">
+                        <a href="#">Cloudburst Brewing</a>
+                    </div>
+                    <div class="item__description">
+                        They make beer. In Seattle. You should drink some! It's pretty good.
+                        <br><br><br>
                     </div>
                 </div>
             </div>
@@ -93,9 +164,8 @@
     </div>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
-<script>
-    bulmaCarousel.attach('#carousel-demo', {
+<script>bulmaCarousel.attach('#slider', {
         slidesToScroll: 1,
-        slidesToShow: 4
-    });
-</script>
+        slidesToShow: 1,
+        infinite: true,
+    });</script>
