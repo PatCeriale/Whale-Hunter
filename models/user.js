@@ -1,5 +1,7 @@
+const bcrypt = require("bcrypt");
+
 module.exports = function (sequelize, DataTypes) {
-    var Customer = sequelize.define("Customer", {
+    var User = sequelize.define("User", {
         user_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -7,37 +9,13 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1, 50]
               }
         },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false
-            //TODO:Must be hidden
-        },
-        first_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-              }
-        },
-        last_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-              }
-        },
-        city: {
-            type: DataTypes.STRING
-        },
-        state: {
-            type: DataTypes.STRING
-        },
-        zip_code: {
-            type: DataTypes.INTEGER
-        },
-        email: {
-            type: DataTypes.STRING
-        }
+        password: DataTypes.STRING,
     })
-    return Customer;
-}
+
+    //Hashes password prior to putting it into the db
+    User.beforeCreate(function(user){
+        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    })
+
+    return User;
+};
