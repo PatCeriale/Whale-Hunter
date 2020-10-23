@@ -128,7 +128,9 @@ router.post('/breweries/', function (req, res) {
         zip_code: req.body.zip_code,
         phone: req.body.phone,
         email: req.body.email,
-        website: req.body.website
+        website: req.body.website,
+        description: req.body.description,
+        image: req.body.image
     }).then(newBrewery => {
         res.json(newBrewery)
         const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
@@ -153,7 +155,9 @@ router.put('/breweries/:id', function (req, res) {
         zip_code: req.body.zip_code,
         phone: req.body.phone,
         email: req.body.email,
-        website: req.body.website
+        website: req.body.website,
+        description: req.body.description,
+        image: req.body.image
     }, {
         where: {
             id: req.params.id
@@ -360,6 +364,58 @@ router.delete("/sixpacks/:id", function (req, res) {
         console.log(err);
         res.status(500).json(err);
     })
+})
+
+//================================================================================
+//Ratings Routes
+//================================================================================
+
+//Get all ahabs from the DB for a specific beer
+router.get('/ratings/:id', function (req, res) {
+  db.Rating.findAll().then(rating => {
+      res.json(style)
+      const dbRatingJson = rating.map(rating => rating.toJSON());
+      var hbsObject = { rating: dbRatingJson };
+      console.log(hbsObject)
+      return res.json(hbsObject);
+      // return res.render("index", hbsObject);
+  })
+})
+
+//Get all ahabs from the DB for a specific user
+router.get("/ratings/:customer_id", function (req, res) {
+  db.Rating.findAll({
+      where: {
+          //TODO:How do we match this ID with a user
+          customer_id: req.params.customer_id
+      }
+  }).then(rating => {
+      res.json(rating)
+      const dbRatingJson = rating.map(rating => rating.toJSON());
+      var hbsObject = { rating: dbRatingJson };
+      console.log(hbsObject)
+      return res.json(hbsObject);
+      // return res.render("index", hbsObject);
+  })
+})
+
+//Add a new ahab to a beer
+router.put('/ratings/:id', function (req, res) {
+  db.Rating.findOne({
+      where: {
+          id: req.params.id
+      }
+  }).then(updateRating => {
+      if (!updateRating) {
+          res.status(404).json(updateSixpack)
+      } else {
+          updateRating.addRating(req.body.beer_id)
+          res.json(updateSixpack)
+      }
+  }).catch(err => {
+      console.log(err)
+      res.status(500).json(err);
+  })
 })
 
 module.exports = router;
