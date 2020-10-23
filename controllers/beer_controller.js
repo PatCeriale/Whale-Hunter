@@ -469,5 +469,16 @@ router.get('/employees', function (req, res) {
     })
   })
   
+//================================================================================
+//Signup and Login Routes
+//================================================================================
+
+router.get('/signup', (req, res) => {
+    return res.render("signup");
+})
+
+router.get('/login', (req, res) => {
+    return res.render("userlogin");
+})
 
 module.exports = router;
