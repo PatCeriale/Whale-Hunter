@@ -471,13 +471,16 @@ router.get('/employees', function (req, res) {
 //================================================================================
 
 router.get("/admin", function (req, res) {
-    db.Employee.findAll().then(employees => {
-        const dbEmployeeJson = employees.map(employee => employee.toJSON());
-        var hbsObject = { employee: dbEmployeeJson };
-        console.log(hbsObject);
-        return res.render("admin",hbsObject);
-});
-        
+    if(req.session.employee){
+        db.Employee.findAll().then(employees => {
+            const dbEmployeeJson = employees.map(employee => employee.toJSON());
+            var hbsObject = { employee: dbEmployeeJson };
+            console.log(hbsObject);
+            return res.render("admin",hbsObject);
+        });
+    } else {
+        res.redirect("/employeelogin").status(401)
+    }
 })    
 
 //Signup and Login Routes
@@ -486,10 +489,14 @@ router.get("/admin", function (req, res) {
 router.get('/signup', (req, res) => {
     return res.render("signup");
 })
+router.get('/employeelogin', (req, res) => {
+    return res.render("employeelogin");
+})
 
 router.get('/login', (req, res) => {
     return res.render("userlogin");
 })
+
 
 
 module.exports = router;

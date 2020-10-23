@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 module.exports = function (sequelize, DataTypes) {
     var Employee = sequelize.define("Employee", {
         user_name: {
@@ -28,13 +30,10 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: true
         }
     })
+    //Hashes password prior to putting it into the db
+    Employee.beforeCreate(function(employee){
+        employee.password = bcrypt.hashSync(employee.password, bcrypt.genSaltSync(10), null);
+    })
 
-    Employee.associate = function (models) {
-        // Employee.hasOne(models.role, {
-        //     foreignKey: {
-        //         allowNull: false
-        //     }
-        // });
-    };
     return Employee;
 }
