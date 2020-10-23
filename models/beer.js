@@ -31,7 +31,7 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: true
             }
         });
-        Beer.belongsTo(models.Rating, {
+        Beer.hasMany(models.Rating, {
             foreignKey: {
                 //TODO: Change back to false before deployment
                 allowNull: true

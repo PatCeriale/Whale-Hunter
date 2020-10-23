@@ -1,0 +1,229 @@
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-white-ter">
+                <h1 class="title">Admin Panel</h1>
+                <h2 class="subtitle"><span class="is-italic">"Where there is beer there is life"</span> - Mahatma
+                    Gandhi</h2>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-primary">
+                <h2 class="has-text-primary-light is-size-3">Add Employee</h2>
+                <form action="/employees" method="post">
+                    <div class="field">
+                        <label class="label is-small">User Name</label>
+                        <div class="control">
+                            <input class="input" name="user_name" type="text" placeholder="User Name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Password</label>
+                        <div class="control">
+                            <input class="input" name="password" type="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">First Name</label>
+                        <div class="control">
+                            <input class="input" name="first_name" type="text" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Last Name</label>
+                        <div class="control">
+                            <input class="input" name="last_name" type="text" placeholder="Last Name">
+                            <input type="hidden" name="active" value="true">
+                        </div>
+                    </div>
+
+                    <button class="button is-block is-black is-fullwidth is-medium" type="submit">Add Employee</button>
+                </form>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box has-background-primary">
+                <h2 class="has-text-primary-light is-size-3">Employees</h2>
+                {{#each employee}}
+                <div class="columns">
+                    <div class="column is-small is-four-fifths">
+                        <pre><p>ID:{{this.id}}     User Name:{{this.user_name}}     Name:{{this.first_name}} {{this.last_name}}</p></pre>
+                    </div>
+                    <div class="column">
+                        <form class="delete-employee-form">
+                            <input input type="hidden" class="user_id" type="text" value={{this.id}}><br>
+                            <button type="submit" class="button is-black is-fullwidth">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-warning">
+                <h2 class="has-text-primary-light is-size-3">Add Style</h2>
+                <form action="/styles/" method="post">
+                    <div class="field">
+                        <label class="label is-small">User Name</label>
+                        <div class="control">
+                            <input class="input" name="name" type="text" placeholder="Style Name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Description</label>
+                        <div class="control">
+                            <textarea class="is-medium textarea" name="description" rows="4"
+                                placeholder="Style Description"></textarea>
+                        </div>
+                    </div>
+                    <button class="button is-block is-black is-fullwidth is-medium" type="submit">Add Style</button>
+                </form>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box has-background-warning">
+                <h2 class="has-text-primary-light is-size-3">Styles</h2>
+                <div class="columns">
+                    <div class="column is-small is-four-fifths">
+                        <pre>Id Style Name</pre>
+                    </div>
+                    <div class="column">
+                        <form class="delete-style-form">
+                            <input input type="hidden" class="id" type="text" value="id"><br>
+                            <button type="submit" class="button is-black is-fullwidth">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-info">
+                <h2 class="has-text-primary-light is-size-3">Add Brewery</h2>
+                <form action="/breweries" method="post">
+                    <div class="field">
+                        <label class="label is-small">Brewery Name</label>
+                        <div class="control">
+                            <input class="input" name="brewery_name" type="text" placeholder="Brewery Name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Address</label>
+                        <div class="control">
+                            <input class="input" name="address_1" type="text" placeholder="Address Line 1">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" name="address_2" type="text" placeholder="Address Line 2">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">City</label>
+                        <div class="control">
+                            <input class="input" name="city" type="text" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">State</label>
+                        <div class="control">
+                            <input class="input" name="state" type="text" placeholder="State">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Zip Code</label>
+                        <div class="control">
+                            <input class="input" name="zip_code" type="text" placeholder="Zip Code">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Phone</label>
+                        <div class="control">
+                            <input class="input" name="phone" type="text" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Email</label>
+                        <div class="control">
+                            <input class="input" name="email" type="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Website</label>
+                        <div class="control">
+                            <input class="input" name="website" type="text" placeholder="Website">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Description</label>
+                        <div class="control">
+                            <input class="input" name="description" type="text" placeholder="Description">
+                        </div>
+                    </div>
+                    <div>
+                        <span id="upload_brewery_widget" class="button is-black is-fullwidth">Upload Image</span>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Image</label>
+                            <input class="input is-medium" name="image" type="text" id="url_brewery_text">
+                        </div>
+                    </div>
+                    <button class="button is-block is-black is-fullwidth is-medium" type="submit">Add Brewery</button>
+                </form>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box has-background-info">
+                <h2 class="has-text-primary-light is-size-3">Search Brewery</h2>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-info">
+                <h2 class="has-text-primary-light is-size-3">Update Brewery</h2>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box has-background-info">
+                <h2 class="has-text-primary-light is-size-3">Remove Brewery</h2>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-success">
+                <h2 class="has-text-primary-light is-size-3">Add Beer</h2>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box has-background-success">
+                <h2 class="has-text-primary-light is-size-3">Search Remove</h2>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            <div class="box has-background-success">
+                <h2 class="has-text-primary-light is-size-3">Update Beer</h2>
+            </div>
+        </div>
+        <div class="column">
+            <div class="box has-background-success">
+                <h2 class="has-text-primary-light is-size-3">Remove Remove</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/deleteemployee.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+<script src="/js/brewerypost.js"></script>

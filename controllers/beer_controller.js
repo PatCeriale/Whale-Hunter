@@ -23,19 +23,18 @@ router.get("/beers", function (req, res) {
 });
 
 //get details for one beer
-router.get("/beers/:id",function(req,res){
-  db.Beer.findOne({
-      where:{
-          id:req.params.id
-      }
-  }).then(beer=>{
-    res.json(beer)
-    const dbBeerJson = beer.map(beer => beer.toJSON());
-    var hbsObject = { beer: dbBeerJson };
-    console.log(hbsObject)
-    return res.json(hbsObject);
-    // return res.render("index", hbsObject);
-  })
+router.get("/beers/:id", function (req, res) {
+    db.Beer.findOne({
+        where: {
+            id: req.params.id
+        }, include: [db.Rating]
+    }).then(beer => {
+        const dbBeerJson = beer.toJSON();
+        var hbsObject = { beer: dbBeerJson, numLikes: beer.Ratings.length };
+        console.log(hbsObject)
+        return res.json(hbsObject);
+        // return res.render("index", hbsObject);
+    })
 })
 
 //Create new beer
@@ -86,19 +85,19 @@ router.get('/breweries', function (req, res) {
 })
 
 //get all details about a single brewery
-router.get("/breweries/:id",function(req,res){
-  db.Brewery.findOne({
-      where:{
-          id:req.params.id
-      }
-  }).then(brewery=>{
-    res.json(brewery)
-    const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
-    var hbsObject = { brewery: dbBreweryJson };
-    console.log(hbsObject)
-    return res.json(hbsObject);
-    // return res.render("index", hbsObject);
-  })
+router.get("/breweries/:id", function (req, res) {
+    db.Brewery.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(brewery => {
+        res.json(brewery)
+        const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
+        var hbsObject = { brewery: dbBreweryJson };
+        console.log(hbsObject)
+        return res.json(hbsObject);
+        // return res.render("index", hbsObject);
+    })
 })
 
 //Get all breweries from the same city
@@ -216,7 +215,7 @@ router.post('/styles/', function (req, res) {
         description: req.body.description
     }).then(newStyle => {
         console.log(newStyle)
-        res.redirect("/style");
+        res.redirect("/admin");
     }).catch(err => {
         console.log(err)
         res.status(500).json(err);
@@ -381,25 +380,120 @@ router.get('/ratings/:id', function (req, res) {
       return res.json(hbsObject);
       // return res.render("index", hbsObject);
   })
-})
 
 //Add a new ahab to a beer
-router.put('/ratings/:id', function (req, res) {
-  db.Rating.findOne({
-      where: {
-          id: req.params.id
-      }
-  }).then(updateRating => {
-      if (!updateRating) {
-          res.status(404).json(updateSixpack)
-      } else {
-          updateRating.addRating(req.body.beer_id)
-          res.json(updateSixpack)
-      }
-  }).catch(err => {
-      console.log(err)
-      res.status(500).json(err);
-  })
+router.post('/ratings/:id', function (req, res) {
+    db.Rating.findAll({
+        where: {
+            BeerId: req.params.id,
+            UserId: req.session.user.id
+        }
+    }).then(ratings => {
+        if (ratings.length === 0) {
+            db.Rating.create({
+                BeerId: req.params.id,
+                UserId: req.session.user.id
+            }).then(updateRating => {
+                console.log(updateRating);
+                if (!updateRating) {
+                    res.status(404).json(updateRating)
+                } else {
+                    res.json(updateRating)
+                }
+            }).catch(err => {
+                console.log(err)
+                res.status(500).json(err);
+            })
+        } else {
+            console.log("You already liked this beer");
+            res.json(ratings);
+        }
+    })
 })
+
+//================================================================================
+//Employee Routes
+//================================================================================
+//Get all employees from the DB
+router.get('/employees', function (req, res) {
+    db.Employee.findAll().then(employee => {
+        res.json(employee)
+        const dbEmployeeJson = employee.map(employee => employee.toJSON());
+        var hbsObject = { employee: dbEmployeeJson };
+        console.log(hbsObject)
+        return res.json(hbsObject);
+        // return res.render("index", hbsObject);
+    })
+  })
+  
+  //create new employee
+  router.post('/employees', function (req, res) {
+    db.Employee.create({
+        user_name: req.body.user_name,
+        password: req.body.password,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        active: req.body.active
+    }).then(newEmployee => {
+        console.log(newEmployee)
+        res.redirect("/admin");
+    }).catch(err => {
+        console.log(err)
+        res.status(500).json(err);
+    })
+  })
+  
+  //Delete employee
+  router.delete("/employees/:id", function (req, res) {
+    db.Employee.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(deleteEmployee => {
+        if (deleteEmployee === 0) {
+            res.status(404).json(deleteEmployee)
+        } else {
+            //TODO:We need to add the page to redirect to here
+            res.redirect("/");
+        }
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
+  })
+  
+//================================================================================
+
+//Admin Route
+//================================================================================
+
+router.get("/admin", function (req, res) {
+    if(req.session.employee){
+        db.Employee.findAll().then(employees => {
+            const dbEmployeeJson = employees.map(employee => employee.toJSON());
+            var hbsObject = { employee: dbEmployeeJson };
+            console.log(hbsObject);
+            return res.render("admin",hbsObject);
+        });
+    } else {
+        res.redirect("/employeelogin").status(401)
+    }
+})    
+
+//Signup and Login Routes
+//================================================================================
+
+router.get('/signup', (req, res) => {
+    return res.render("signup");
+})
+router.get('/employeelogin', (req, res) => {
+    return res.render("employeelogin");
+})
+
+router.get('/login', (req, res) => {
+    return res.render("userlogin");
+})
+
+
 
 module.exports = router;
