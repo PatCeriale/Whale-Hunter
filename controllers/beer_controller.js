@@ -216,7 +216,7 @@ router.post('/styles/', function (req, res) {
         description: req.body.description
     }).then(newStyle => {
         console.log(newStyle)
-        res.redirect("/style");
+        res.redirect("/admin");
     }).catch(err => {
         console.log(err)
         res.status(500).json(err);
@@ -443,7 +443,7 @@ router.get('/employees', function (req, res) {
         active: req.body.active
     }).then(newEmployee => {
         console.log(newEmployee)
-        res.redirect("/employee");
+        res.redirect("/admin");
     }).catch(err => {
         console.log(err)
         res.status(500).json(err);
@@ -470,6 +470,20 @@ router.get('/employees', function (req, res) {
   })
   
 //================================================================================
+
+//Admin Route
+//================================================================================
+
+router.get("/admin", function (req, res) {
+    db.Employee.findAll().then(employees => {
+        const dbEmployeeJson = employees.map(employee => employee.toJSON());
+        var hbsObject = { employee: dbEmployeeJson };
+        console.log(hbsObject);
+        return res.render("admin",hbsObject);
+});
+        
+})    
+
 //Signup and Login Routes
 //================================================================================
 
@@ -480,5 +494,6 @@ router.get('/signup', (req, res) => {
 router.get('/login', (req, res) => {
     return res.render("userlogin");
 })
+
 
 module.exports = router;
