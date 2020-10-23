@@ -128,7 +128,9 @@ router.post('/breweries/', function (req, res) {
         zip_code: req.body.zip_code,
         phone: req.body.phone,
         email: req.body.email,
-        website: req.body.website
+        website: req.body.website,
+        description: req.body.description,
+        image: req.body.image
     }).then(newBrewery => {
         res.json(newBrewery)
         const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
@@ -153,7 +155,9 @@ router.put('/breweries/:id', function (req, res) {
         zip_code: req.body.zip_code,
         phone: req.body.phone,
         email: req.body.email,
-        website: req.body.website
+        website: req.body.website,
+        description: req.body.description,
+        image: req.body.image
     }, {
         where: {
             id: req.params.id
