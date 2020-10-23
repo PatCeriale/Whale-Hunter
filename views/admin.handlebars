@@ -201,6 +201,53 @@
         <div class="column">
             <div class="box has-background-success">
                 <h2 class="has-text-primary-light is-size-3">Add Beer</h2>
+                <form action="/beers" method="post">
+                    <div class="field">
+                        <label class="label is-small">Beer Name</label>
+                        <div class="control">
+                            <input class="input" name="name" type="text" placeholder="Beer Name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Description</label>
+                            <textarea class="is-medium textarea" name="description" rows="3" 
+                                placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="control">
+                             <label class="label is-small">ABV</label>
+                            <input class="input" name="abv" type="text" placeholder="ABV">
+                        </div>
+                        <div class="control">
+                            <label class="label is-small">IBU</label>
+                            <input class="input" name="ibu" type="text" placeholder="IBU">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Brewery</label>
+                        <div class="control">
+                            <input class="input" name="BreweryID" type="text" placeholder="Brewery">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Style</label>
+                        <div class="control">
+                            <input class="input" name="StyleID" type="text" placeholder="Style">
+                        </div>
+                    </div>
+                    <div>
+                        <span id="upload_beer_widget" class="button is-black is-fullwidth">Upload Image</span>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label>Image</label>
+                            <input class="input is-medium" name="image" type="text" id="url_beer_text">
+                        </div>
+                    </div>
+                    <button class="button is-block is-black is-fullwidth is-medium" type="submit">Add Beer</button>
+                </form>
             </div>
         </div>
         <div class="column">
@@ -227,3 +274,4 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script src="/js/brewerypost.js"></script>
+<script src="/js/beerpost.js"></script>
