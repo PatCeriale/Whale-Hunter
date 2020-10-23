@@ -380,7 +380,8 @@ router.get('/ratings/:id', function (req, res) {
       return res.json(hbsObject);
       // return res.render("index", hbsObject);
   })
-
+})
+    
 //Add a new ahab to a beer
 router.post('/ratings/:id', function (req, res) {
     db.Rating.findAll({
