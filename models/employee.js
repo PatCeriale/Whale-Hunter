@@ -29,16 +29,6 @@ module.exports = function (sequelize, DataTypes) {
         active: {
             type: DataTypes.BOOLEAN,
             defaultValue: true
-        },
-        phone: {
-            type: DataTypes.INTEGER
-        },
-        email: {
-            type: DataTypes.STRING
-        },
-        website: {
-            type: DataTypes.STRING,
-            allowNull: false
         }
     })
 
