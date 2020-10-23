@@ -15,3 +15,32 @@ body {
 .carousel {
   overflow: hidden;
 }
+
+.navbar {
+  /* background-color: lightgrey; */
+  background: url(https://lh3.googleusercontent.com/proxy/52F-mxnzUuS3LS6IDA_4Ar7oIrxPZ9lUKy5xdne5RshF4S7QOeo6M_JTg9fdNTddZdvDwYe-R9LY7xDZAF2JCJ2bvuSoGJIlYibj3z9-9C-uq72y5pCs);
+  background-size: cover;
+  width: 100%;
+}
+
+.whale-logo {
+  background: url(https://i.pinimg.com/originals/6f/20/39/6f2039da60d44bd4af2976367e4e35be.jpg);
+  background-size: cover;
+  width: 125px;
+  height: 125px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(37, 44, 51);
+  margin-left: 50%;
+  margin-right: 50%;
+}
+
+.whale-box {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
