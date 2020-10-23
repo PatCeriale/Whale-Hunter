@@ -27,11 +27,24 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars")
 
+const session = require("express-session");
+
+app.use(session({
+  secret: "ipaIsBest",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge:2*60*60*1000
+  }
+}))
+
 var routes = require("./controllers/beer_controller.js");
-const userPost_routes = require("./controllers/post_controller.js")
+const userPost_routes = require("./controllers/post_controller.js");
+const authPost_routes = require("./controllers/auth_controller.js");
 
 app.use(routes);
 app.use(userPost_routes);
+app.use(authPost_routes);
 
 var PORT = process.env.PORT || 8080;
 

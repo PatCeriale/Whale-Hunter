@@ -7,7 +7,7 @@ var db = require("../models/");
 //================================================================================
 //Basic redirect route. May change later.
 router.get("/", function (req, res) {
-    res.redirect("/beer");
+    res.redirect("/beers");
 });
 
 //Get all beer

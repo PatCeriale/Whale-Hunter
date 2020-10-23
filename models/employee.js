@@ -2,10 +2,7 @@ module.exports = function (sequelize, DataTypes) {
     var Employee = sequelize.define("Employee", {
         user_name: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-              }
+            unique: true
         },
         password: {
             type: DataTypes.STRING,
@@ -17,14 +14,14 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1]
-              }
+            }
         },
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
-              }
+            }
         },
         active: {
             type: DataTypes.BOOLEAN,

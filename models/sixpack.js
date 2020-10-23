@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
         Sixpack.belongsToMany(models.Beer, {
             through:"sixPackBeer"
         });
-        Sixpack.belongsTo(models.Customer, {
+        Sixpack.belongsTo(models.User, {
             foreignKey: {
                 //TODO: Change back to false before deployment
                 allowNull: true
