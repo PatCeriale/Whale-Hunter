@@ -35,7 +35,13 @@ module.exports = function (sequelize, DataTypes) {
         website: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        description: {
+            type: DataTypes.STRING
+        },
+        image: {
+            type: DataTypes.STRING
+        },
     })
 
     Brewery.associate = function (models) {
