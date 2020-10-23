@@ -370,20 +370,18 @@ router.delete("/sixpacks/:id", function (req, res) {
 //================================================================================
 
 //Get all ahabs from the DB for a specific beer
-router.get('/ratings/:beerid', function (req, res) {
-    db.Rating.findAll({
-        where: {
-            BeerId: req.params.beerid
-        }
-    }).then(rating => {
-        const dbRatingJson = rating.map(rating => rating.toJSON());
-        var hbsObject = { rating: dbRatingJson };
-        console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
-    })
+router.get('/ratings/:id', function (req, res) {
+  db.Rating.count().then(rating => {
+    console.log("There are " + rating + " likes for this beer")  
+    res.json(rating)
+      const dbRatingJson = rating.map(rating => rating.toJSON());
+      var hbsObject = { rating: dbRatingJson };
+      console.log(hbsObject)
+      return res.json(hbsObject);
+      // return res.render("index", hbsObject);
+  })
 })
-
+    
 //Add a new ahab to a beer
 router.post('/ratings/:id', function (req, res) {
     db.Rating.findAll({
