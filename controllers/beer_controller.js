@@ -23,19 +23,18 @@ router.get("/beers", function (req, res) {
 });
 
 //get details for one beer
-router.get("/beers/:id",function(req,res){
-  db.Beer.findOne({
-      where:{
-          id:req.params.id
-      }
-  }).then(beer=>{
-    res.json(beer)
-    const dbBeerJson = beer.map(beer => beer.toJSON());
-    var hbsObject = { beer: dbBeerJson };
-    console.log(hbsObject)
-    return res.json(hbsObject);
-    // return res.render("index", hbsObject);
-  })
+router.get("/beers/:id", function (req, res) {
+    db.Beer.findOne({
+        where: {
+            id: req.params.id
+        }, include: [db.Rating]
+    }).then(beer => {
+        const dbBeerJson = beer.toJSON();
+        var hbsObject = { beer: dbBeerJson, numLikes: beer.Ratings.length };
+        console.log(hbsObject)
+        return res.json(hbsObject);
+        // return res.render("index", hbsObject);
+    })
 })
 
 //Create new beer
@@ -86,19 +85,19 @@ router.get('/breweries', function (req, res) {
 })
 
 //get all details about a single brewery
-router.get("/breweries/:id",function(req,res){
-  db.Brewery.findOne({
-      where:{
-          id:req.params.id
-      }
-  }).then(brewery=>{
-    res.json(brewery)
-    const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
-    var hbsObject = { brewery: dbBreweryJson };
-    console.log(hbsObject)
-    return res.json(hbsObject);
-    // return res.render("index", hbsObject);
-  })
+router.get("/breweries/:id", function (req, res) {
+    db.Brewery.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(brewery => {
+        res.json(brewery)
+        const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
+        var hbsObject = { brewery: dbBreweryJson };
+        console.log(hbsObject)
+        return res.json(hbsObject);
+        // return res.render("index", hbsObject);
+    })
 })
 
 //Get all breweries from the same city
@@ -371,51 +370,48 @@ router.delete("/sixpacks/:id", function (req, res) {
 //================================================================================
 
 //Get all ahabs from the DB for a specific beer
-router.get('/ratings/:id', function (req, res) {
-  db.Rating.findAll().then(rating => {
-      res.json(style)
-      const dbRatingJson = rating.map(rating => rating.toJSON());
-      var hbsObject = { rating: dbRatingJson };
-      console.log(hbsObject)
-      return res.json(hbsObject);
-      // return res.render("index", hbsObject);
-  })
-})
-
-//Get all ahabs from the DB for a specific user
-router.get("/ratings/:customer_id", function (req, res) {
-  db.Rating.findAll({
-      where: {
-          //TODO:How do we match this ID with a user
-          customer_id: req.params.customer_id
-      }
-  }).then(rating => {
-      res.json(rating)
-      const dbRatingJson = rating.map(rating => rating.toJSON());
-      var hbsObject = { rating: dbRatingJson };
-      console.log(hbsObject)
-      return res.json(hbsObject);
-      // return res.render("index", hbsObject);
-  })
+router.get('/ratings/:beerid', function (req, res) {
+    db.Rating.findAll({
+        where: {
+            BeerId: req.params.beerid
+        }
+    }).then(rating => {
+        const dbRatingJson = rating.map(rating => rating.toJSON());
+        var hbsObject = { rating: dbRatingJson };
+        console.log(hbsObject)
+        return res.json(hbsObject);
+        // return res.render("index", hbsObject);
+    })
 })
 
 //Add a new ahab to a beer
-router.put('/ratings/:id', function (req, res) {
-  db.Rating.findOne({
-      where: {
-          id: req.params.id
-      }
-  }).then(updateRating => {
-      if (!updateRating) {
-          res.status(404).json(updateSixpack)
-      } else {
-          updateRating.addRating(req.body.beer_id)
-          res.json(updateSixpack)
-      }
-  }).catch(err => {
-      console.log(err)
-      res.status(500).json(err);
-  })
+router.post('/ratings/:id', function (req, res) {
+    db.Rating.findAll({
+        where: {
+            BeerId: req.params.id,
+            UserId: req.session.user.id
+        }
+    }).then(ratings => {
+        if (ratings.length === 0) {
+            db.Rating.create({
+                BeerId: req.params.id,
+                UserId: req.session.user.id
+            }).then(updateRating => {
+                console.log(updateRating);
+                if (!updateRating) {
+                    res.status(404).json(updateRating)
+                } else {
+                    res.json(updateRating)
+                }
+            }).catch(err => {
+                console.log(err)
+                res.status(500).json(err);
+            })
+        } else {
+            console.log("You already liked this beer");
+            res.json(ratings);
+        }
+    })
 })
 
 //================================================================================
