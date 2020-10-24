@@ -23,13 +23,15 @@ router.get("/", function (req, res) {
 
 //Get all beer
 router.get("/beers", function (req, res) {
-    db.Beer.findAll()
+    db.Beer.findAll({
+        include: [db.Rating,db.Style,db.Brewery]
+    })
         .then(function (dbBeers) {
             console.log(dbBeers);
             const dbBeersJson = dbBeers.map(beer => beer.toJSON());
             var hbsObject = { beer: dbBeersJson };
             console.log("Beer hbsObject", hbsObject);
-            return res.render("index", hbsObject);
+            return res.render("beers", hbsObject);
         });
 });
 
