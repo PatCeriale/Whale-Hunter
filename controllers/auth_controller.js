@@ -14,7 +14,7 @@ router.post('/signup', (req, res) => {
         password: req.body.password
     }).then(newUser => {
         const newUserJson = newUser.toJSON();
-        const hbsObject = {user : newUserJson};
+        const hbsObject = {userNew : newUserJson};
         return res.render("userlogin", hbsObject);
     }).catch(err => {
         console.log(err);
