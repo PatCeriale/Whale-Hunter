@@ -38,13 +38,11 @@ router.get("/beers/:id", function (req, res) {
     db.Beer.findOne({
         where: {
             id: req.params.id
-        }, include: [db.Rating]
+        }, include: [db.Rating,db.Style,db.Brewery]
     }).then(beer => {
         const dbBeerJson = beer.toJSON();
         var hbsObject = { beer: dbBeerJson, numLikes: beer.Ratings.length };
-        console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
+        return res.render("beerdetail", hbsObject);
     })
 })
 
