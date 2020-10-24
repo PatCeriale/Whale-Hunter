@@ -18,49 +18,66 @@ router.get('/sixpacks', function (req, res) {
     })
 })
 
-//TODO:Get a specific sixpack with a specific ID
-router.get("/sixpacks/:id", function (req, res) {
+//Get the current sixpack in user session
+router.get("/user/sixpack/", function (req, res) {
     db.Sixpack.findAll({
         where: {
-            id: req.params.id
+            id: req.session.sixpack.id
+        },
+        include: {
+            model: db.Beer,
+            include: [db.Rating,db.Brewery,db.Style]
         }
     }).then(sixpack => {
-        res.json(sixpack)
+        //res.json(sixpack[6])
         const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
-        var hbsObject = { sixpack: dbSixpackJson };
+        // const dbBeerJson = sixpack[5].map(beer => beer.toJSON());
+        var hbsObject = { 
+            sixpack: dbSixpackJson,
+            // beer: dbBeerJson
+        };
         console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
+        // return res.json(hbsObject);
+        return res.render("sixpack", hbsObject);
     })
 })
 
-//TODO:Get all sixpacks associated with a user
-router.get("/sixpacks/:customer_id", function (req, res) {
+// Get all sixpacks associated with a logged in user
+router.get("/user/sixpacks/", function (req, res) {
     db.Sixpack.findAll({
         where: {
-            //TODO:How do we match this ID with a user
-            customer_id: req.params.customer_id
+            UserId: req.session.user.id
         }
     }).then(sixpack => {
         res.json(sixpack)
         const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
         var hbsObject = { sixpack: dbSixpackJson };
         console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
+        // return res.json(hbsObject);
+        // return res.render("sixpack", hbsObject);
     })
+})
+
+// Switch to new sixpack
+router.get('/user/sixpacks/:id', function (req, res) {
+        req.session.sixpack = {
+            id: req.params.id
+        }
+        res.redirect("/user/sixpack");
 })
 
 //create new sixpack
 router.post('/sixpacks', function (req, res) {
     console.log(req.body)
-    db.Sixpack.create({
-        //TODO:how do I get beer_id and customer_id as foreign keys to populate?
-        BeerId: req.body.beer_id,
-        CustomerId: req.body.customer_id,
+    db.Sixpack.create({        
+        UserId: req.session.user.id,
         name: req.body.name,
     }).then(newSixpack => {
         console.log(newSixpack)
+        req.session.sixpack = {
+            id: newSixpack.id,
+            name: newSixpack.name
+        }
         res.redirect("/sixpack");
     }).catch(err => {
         console.log(err)

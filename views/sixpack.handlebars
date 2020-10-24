@@ -1,240 +1,49 @@
 <body>
     <div class="hero">
-        <div class="container">
-            <h1 class="title">My Six Pack/Six Pack Name</h1>
+        <div class="container">{{#each sixpack}}
+            <h1 class="title">My {{this.name}} Six Pack</h1>
         </div>
     </div>
 
     <section>
         <!-- Six Pack Beers -->
         <div class="container is-max-desktop beer-detail-container">
-            <!-- Beer #1 -->
+             
+              {{#each Beers}}
             <div class="card is-shady m-2">
                 <div class="card-content">
                     <div class="media">
                         <div class="media-left">
                             <figure class="image is-96x96">
-                                <img src="https://whatcomwebsite-inflightstudio.netdna-ssl.com/wp-content/uploads/sites/10/2018/11/CNB-Logos_Primary-Loc-Red-BKG-260.png"
+                                <img src="{{this.image}}"
                                     alt="Placeholder image">
                             </figure>
                         </div>
                         <div class="media-right">
                             <div class="media-content">
-                                <h4 class="title beer-title m-0">1. Beer Title</h4>
-                                <p class="m-0 is-size-7"><span class="has-text-danger is-size-5">5</span>/5</p>
+                                <h4 class="title beer-title m-0">{{this.name}}</h4>
+                                <figure class="image is-24x24">
+                                        <img class="ahab is-clickable" src="/images/ahab.png" data-index={{this.id}}>
+                                </figure>
+                                <p class="m-0 is-size-7">{{this.Ratings.length}}</p>
 
-                                <h5 class="subtitle has-text-grey m-0 is-6">Brewery Name</h5>
-                                <p class="m-0 is-size-7">Stlye: <span class="beer-ibu">Bohemian Style Pilsner</span></p>
-                                <p class="m-0 is-size-7">IBU: <span class="beer-ibu">36</span></p>
-                                <p class="is-size-7 m-0">ABV: <span class="beer-abv">5</span>%</p>
+                                <h5 class="subtitle has-text-grey m-0 is-6">{{this.Brewery.brewery_name}}</h5>
+                                <p class="m-0 is-size-7">Stlye: <span class="beer-ibu">{{this.Style.name}}</span></p>
+                                <p class="m-0 is-size-7">IBU: <span class="beer-ibu">{{this.ibu}}</span></p>
+                                <p class="is-size-7 m-0">ABV: <span class="beer-abv">{{this.abv}}</span>%</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="content">
-                        Pilsner, the world’s most popular style of beer, was invented in Czech Bohemia, perfected in
-                        Germany, and turned into flavorless mass-market fizz in America. Chuckanut’s Genuine Bohemian
-                        Style Pilsner is a thing of beauty; it is delicate, sharp, flavorful, aromatic, and appetizing.
-                        Pilsner’s cold fermentation leaves the beer clear and bright after its long aging process. High
-                        levels of natural carbonation in Chuckanut Pilsner result from the aging process, creating a
-                        pillowy white head on top of the golden liquid. Chuckanut Brewery’s genuine Bohemian style
-                        Pilsner is truly mouthwatering, deeply satisfying, and incomparably refreshing! Chuckanut
-                        Pilsner has won two GABF Medals and a Gold World Beer Cup medal!
+                        {{this.description}}
                     </div>
                 </div>
                 <footer class="card-footer">
                     <span class=" card-footer-item button is-danger is-medium is-fullwidth">Remove From Six Pack</span>
                 </footer>
             </div>
-            <!-- Beer #2 -->
-            <div class="card is-shady m-2">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-96x96">
-                                <img src="https://whatcomwebsite-inflightstudio.netdna-ssl.com/wp-content/uploads/sites/10/2018/11/CNB-Logos_Primary-Loc-Red-BKG-260.png"
-                                    alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="media-right">
-                            <div class="media-content">
-                                <h4 class="title beer-title m-0">Pilsner Lager</h4>
-                                <p class="m-0 is-size-7"><span class="has-text-danger is-size-5">5</span>/5</p>
-
-                                <h5 class="subtitle has-text-grey m-0 is-6">Chuckanut Brewery</h5>
-                                <p class="m-0 is-size-7">Stlye: <span class="beer-ibu">Bohemian Style Pilsner</span></p>
-                                <p class="m-0 is-size-7">IBU: <span class="beer-ibu">36</span></p>
-                                <p class="is-size-7 m-0">ABV: <span class="beer-abv">5</span>%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        Pilsner, the world’s most popular style of beer, was invented in Czech Bohemia, perfected in
-                        Germany, and turned into flavorless mass-market fizz in America. Chuckanut’s Genuine Bohemian
-                        Style Pilsner is a thing of beauty; it is delicate, sharp, flavorful, aromatic, and appetizing.
-                        Pilsner’s cold fermentation leaves the beer clear and bright after its long aging process. High
-                        levels of natural carbonation in Chuckanut Pilsner result from the aging process, creating a
-                        pillowy white head on top of the golden liquid. Chuckanut Brewery’s genuine Bohemian style
-                        Pilsner is truly mouthwatering, deeply satisfying, and incomparably refreshing! Chuckanut
-                        Pilsner has won two GABF Medals and a Gold World Beer Cup medal!
-                    </div>
-                </div>
-                <footer class="card-footer">
-                    <span class=" card-footer-item button is-danger is-medium is-fullwidth">Remove From Six Pack</span>
-                </footer>
-            </div>
-            <!-- Beer #3 -->
-            <div class="card is-shady m-2">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-96x96">
-                                <img src="https://whatcomwebsite-inflightstudio.netdna-ssl.com/wp-content/uploads/sites/10/2018/11/CNB-Logos_Primary-Loc-Red-BKG-260.png"
-                                    alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="media-right">
-                            <div class="media-content">
-                                <h4 class="title beer-title m-0">3. Beer Title</h4>
-                                <p class="m-0 is-size-7"><span class="has-text-danger is-size-5">5</span>/5</p>
-
-                                <h5 class="subtitle has-text-grey m-0 is-6">Brewery Name</h5>
-                                <p class="m-0 is-size-7">Stlye: <span class="beer-ibu">Bohemian Style Pilsner</span></p>
-                                <p class="m-0 is-size-7">IBU: <span class="beer-ibu">36</span></p>
-                                <p class="is-size-7 m-0">ABV: <span class="beer-abv">5</span>%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        Pilsner, the world’s most popular style of beer, was invented in Czech Bohemia, perfected in
-                        Germany, and turned into flavorless mass-market fizz in America. Chuckanut’s Genuine Bohemian
-                        Style Pilsner is a thing of beauty; it is delicate, sharp, flavorful, aromatic, and appetizing.
-                        Pilsner’s cold fermentation leaves the beer clear and bright after its long aging process. High
-                        levels of natural carbonation in Chuckanut Pilsner result from the aging process, creating a
-                        pillowy white head on top of the golden liquid. Chuckanut Brewery’s genuine Bohemian style
-                        Pilsner is truly mouthwatering, deeply satisfying, and incomparably refreshing! Chuckanut
-                        Pilsner has won two GABF Medals and a Gold World Beer Cup medal!
-                    </div>
-                </div>
-                <footer class="card-footer">
-                    <span class=" card-footer-item button is-danger is-medium is-fullwidth">Remove From Six Pack</span>
-                </footer>
-            </div>
-            <!-- Beer #4 -->
-            <div class="card is-shady m-2">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-96x96">
-                                <img src="https://whatcomwebsite-inflightstudio.netdna-ssl.com/wp-content/uploads/sites/10/2018/11/CNB-Logos_Primary-Loc-Red-BKG-260.png"
-                                    alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="media-right">
-                            <div class="media-content">
-                                <h4 class="title beer-title m-0">4. Beer Title</h4>
-                                <p class="m-0 is-size-7"><span class="has-text-danger is-size-5">5</span>/5</p>
-
-                                <h5 class="subtitle has-text-grey m-0 is-6">Brewery Name</h5>
-                                <p class="m-0 is-size-7">Stlye: <span class="beer-ibu">Bohemian Style Pilsner</span></p>
-                                <p class="m-0 is-size-7">IBU: <span class="beer-ibu">36</span></p>
-                                <p class="is-size-7 m-0">ABV: <span class="beer-abv">5</span>%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        Pilsner, the world’s most popular style of beer, was invented in Czech Bohemia, perfected in
-                        Germany, and turned into flavorless mass-market fizz in America. Chuckanut’s Genuine Bohemian
-                        Style Pilsner is a thing of beauty; it is delicate, sharp, flavorful, aromatic, and appetizing.
-                        Pilsner’s cold fermentation leaves the beer clear and bright after its long aging process. High
-                        levels of natural carbonation in Chuckanut Pilsner result from the aging process, creating a
-                        pillowy white head on top of the golden liquid. Chuckanut Brewery’s genuine Bohemian style
-                        Pilsner is truly mouthwatering, deeply satisfying, and incomparably refreshing! Chuckanut
-                        Pilsner has won two GABF Medals and a Gold World Beer Cup medal!
-                    </div>
-                </div>
-                <footer class="card-footer">
-                    <span class=" card-footer-item button is-danger is-medium is-fullwidth">Remove From Six Pack</span>
-                </footer>
-            </div>
-            <!-- Beer #5 -->
-            <div class="card is-shady m-2">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-96x96">
-                                <img src="https://whatcomwebsite-inflightstudio.netdna-ssl.com/wp-content/uploads/sites/10/2018/11/CNB-Logos_Primary-Loc-Red-BKG-260.png"
-                                    alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="media-right">
-                            <div class="media-content">
-                                <h4 class="title beer-title m-0">5. Beer Title</h4>
-                                <p class="m-0 is-size-7"><span class="has-text-danger is-size-5">5</span>/5</p>
-
-                                <h5 class="subtitle has-text-grey m-0 is-6">Brewery Name</h5>
-                                <p class="m-0 is-size-7">Stlye: <span class="beer-ibu">Bohemian Style Pilsner</span></p>
-                                <p class="m-0 is-size-7">IBU: <span class="beer-ibu">36</span></p>
-                                <p class="is-size-7 m-0">ABV: <span class="beer-abv">5</span>%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        Pilsner, the world’s most popular style of beer, was invented in Czech Bohemia, perfected in
-                        Germany, and turned into flavorless mass-market fizz in America. Chuckanut’s Genuine Bohemian
-                        Style Pilsner is a thing of beauty; it is delicate, sharp, flavorful, aromatic, and appetizing.
-                        Pilsner’s cold fermentation leaves the beer clear and bright after its long aging process. High
-                        levels of natural carbonation in Chuckanut Pilsner result from the aging process, creating a
-                        pillowy white head on top of the golden liquid. Chuckanut Brewery’s genuine Bohemian style
-                        Pilsner is truly mouthwatering, deeply satisfying, and incomparably refreshing! Chuckanut
-                        Pilsner has won two GABF Medals and a Gold World Beer Cup medal!
-                    </div>
-                </div>
-                <footer class="card-footer">
-                    <span class=" card-footer-item button is-danger is-medium is-fullwidth">Remove From Six Pack</span>
-                </footer>
-            </div>
-            <!-- Beer #6 -->
-            <div class="card is-shady m-2">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-96x96">
-                                <img src="https://whatcomwebsite-inflightstudio.netdna-ssl.com/wp-content/uploads/sites/10/2018/11/CNB-Logos_Primary-Loc-Red-BKG-260.png"
-                                    alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="media-right">
-                            <div class="media-content">
-                                <h4 class="title beer-title m-0">6. Beer Title</h4>
-                                <p class="m-0 is-size-7"><span class="has-text-danger is-size-5">5</span>/5</p>
-
-                                <h5 class="subtitle has-text-grey m-0 is-6">Brewery Name</h5>
-                                <p class="m-0 is-size-7">Stlye: <span class="beer-ibu">Bohemian Style Pilsner</span></p>
-                                <p class="m-0 is-size-7">IBU: <span class="beer-ibu">36</span></p>
-                                <p class="is-size-7 m-0">ABV: <span class="beer-abv">5</span>%</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        Pilsner, the world’s most popular style of beer, was invented in Czech Bohemia, perfected in
-                        Germany, and turned into flavorless mass-market fizz in America. Chuckanut’s Genuine Bohemian
-                        Style Pilsner is a thing of beauty; it is delicate, sharp, flavorful, aromatic, and appetizing.
-                        Pilsner’s cold fermentation leaves the beer clear and bright after its long aging process. High
-                        levels of natural carbonation in Chuckanut Pilsner result from the aging process, creating a
-                        pillowy white head on top of the golden liquid. Chuckanut Brewery’s genuine Bohemian style
-                        Pilsner is truly mouthwatering, deeply satisfying, and incomparably refreshing! Chuckanut
-                        Pilsner has won two GABF Medals and a Gold World Beer Cup medal!
-                    </div>
-                </div>
-                <footer class="card-footer">
-                    <span class=" card-footer-item button is-danger is-medium is-fullwidth">Remove From Six Pack</span>
-                </footer>
-            </div>
+            {{/each}}
+            {{/each}}
         </div>
     </section>
