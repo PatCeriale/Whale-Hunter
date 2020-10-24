@@ -100,12 +100,22 @@ router.get("/breweries/:id", function (req, res) {
             id: req.params.id
         }
     }).then(brewery => {
-        res.json(brewery)
-        const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
-        var hbsObject = { brewery: dbBreweryJson };
-        console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
+        const dbBreweryJson = brewery.toJSON();
+        db.Beer.findAll({
+            where: {
+                BreweryId: brewery.id
+            }, 
+            include: [db.Rating,db.Style]
+        }).then(beers => {
+            const dbBeerJson = beers.map(beer => beer.toJSON());
+            var hbsObject = {
+                brewery: dbBreweryJson,
+                breweryBeer: dbBeerJson
+            };
+            //res.json(hbsObject);
+            return res.render("brewerydetail", hbsObject);
+        })
+
     })
 })
 
