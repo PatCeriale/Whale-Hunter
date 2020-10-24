@@ -1,5 +1,5 @@
-<section class="section">
-    <div class="container is-clipped">
+<section class="section mb-0 pb-0">
+    <div class="container is-clipped mb-0 pb-0">
         <h1 class="title">Popular</h1>
 
         <div id="slider">
@@ -106,7 +106,6 @@
                     </div>
                     <div class="item__description">
                         They make beer. In Seattle. You should drink some! It's pretty good.
-                        <br><br><br>
                     </div>
                 </div>
             </div>
@@ -114,8 +113,8 @@
     </div>
 </section>
 <!-- ///////////////////////// Trending 6 pack container/////////////////////////////// -->
-<section class="section">
-    <div class="container">
+<section class="section mt-0 pt-0">
+    <div class="container mt-0 pt-0">
         <div class="columns is-centered is-multiline is-flex-wrap-wrap" style="padding: 2rem">
             {{#each post}}
             <div class="column is-one-quarter">
@@ -135,7 +134,7 @@
                             <p>{{this.description}}
                             <a href="#">#{{this.beer_name}}</a> <a href="#">#{{this.brewery_name}}</a>
                             <br>
-                            <time datetime="2016-1-1">{{this.createdAt}}</time>
+                            <time datetime="{{this.createdAt}}">{{this.createdAt}}</time>
                             </p>
                         </div>
                     </div>
