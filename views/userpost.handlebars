@@ -1,56 +1,89 @@
 <section class="section">
   <div class="container">
+
     <div class="columns">
-      <div class="column"></div>
-      <div class="column box is-two-fifths register">
-        <form action="/userpost" method="post">
-        <div class="field">
-            <div class="control">
-              <label><p class="title is-3">Posting as: {{user.user_name}}</p></label>
-              <input class="input is-medium" name="user_name" type="hidden"  value={{user.user_name}}>
+      <div class="column card is-8 is-offset-2 register">
+        <form action="/userpost" method="post"></form>
+        <div class="columns">
+
+          <div class="column left">
+
+            <div class="field">
+              <div class="control">
+                <label>
+                  <p class="title is-3">Posting as: {{user.user_name}}</p>
+                </label>
+                <input class="input is-medium" name="user_name" type="hidden" value={{user.user_name}}>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <label>Title</label>
+                <input class="input is-small" name="title" type="text" id="inputTitle" placeholder="Title">
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <label>Description</label>
+                <textarea class="textarea" name="description" rows="3" maxlength="150"
+                  placeholder="Description - limit 150 characters"id="inputDescription"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <label>Beer</label>
+                <input class="input is-small" name="beer_name" type="text" placeholder="Beer Name" id="inputBeerName">
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <label>Brewery</label>
+                <input class="input is-small" name="brewery_name" type="text" placeholder="Brewery Name" id="inputBreweryName">
+              </div>
+            </div>
+            <div>
+              <span id="upload_widget" class="button is-black is-fullwidth">Upload Image</span>
+            </div>
+            <div class="field">
+              <div class="control">
+                <input class="input is-medium" name="image" type="hidden" id="url_text">
+              </div>
+            </div>
+
+
+          </div>
+          <div class="column right card">
+
+
+            <div class="card-image">
+              <figure class=" is-4by5">
+                <img src="https://place-hold.it/400x500" id="url_img">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p><span class="title is-5" id="postTitle">Title of Post</span> <span
+                      class="subtitle is-7">@{{user.user_name}}</span></p>
+                </div>
+              </div>
+              <div class="content">
+                <p><span id="postDescription">Description of your tasty Beer.</span>
+                  <a href="#">#<span id="postBeerName">Beer Name</span></a> <a href="#">#<span id="postBreweryName">Brewery Name</span></a>
+                </p>
+              </div>
             </div>
           </div>
-          <div class="field">
-            <div class="control">
-              <label>Title</label>
-              <input class="input is-medium" name="title" type="text" placeholder="Title">
-            </div>
-          </div>
-          <div class="field">
-            <div class="control">
-              <label>Description</label>
-              <textarea class="is-medium textarea" name="description" rows="3" maxlength="150"
-                placeholder="Description - limit 150 characters"></textarea>
-            </div>
-          </div>
-          <div class="field">
-            <div class="control">
-              <label>Beer</label>
-              <input class="input is-medium" name="beer_name" type="text" placeholder="Beer Name">
-            </div>
-          </div>
-          <div class="field">
-            <div class="control">
-              <label>Brewery</label>
-              <input class="input is-medium" name="brewery_name" type="text" placeholder="Brewery Name">
-            </div>
-          </div>
-          <div>
-            <span id="upload_widget" class="button is-black is-fullwidth">Upload Image</span>
-          </div>
-          <div class="field">
-            <div class="control">
-              <label>Image</label>
-              <input class="input is-medium" name="image" type="text" id="url_text">
-            </div>
-          </div>
-          <button class="button is-block is-black is-fullwidth is-medium" type="submit">Post</button>
+
+          
+          
+        </div>
+        <footer>
+            <button class="button is-block is-black is-fullwidth " type="submit">Post</button>
+          </footer>
         </form>
       </div>
-
-      <div class="column"></div>
     </div>
-  </div>
   </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
