@@ -6,7 +6,7 @@ document.getElementById("upload_widget").addEventListener("click", function() {
                     console.log("SUCCESS FUCKER");
                     console.log(result.info);
                     document.getElementById('url_text').value = result.info.url;
-                    document.getElementById('url_img').src = "https://res.cloudinary.com/crowandrew/image/upload/h_128,c_fit/" + result.info.path;
+                    document.getElementById('url_img').src = "https://res.cloudinary.com/crowandrew/image/upload/h_500,w_400,c_fit/" + result.info.path;
                 }
             });
 
