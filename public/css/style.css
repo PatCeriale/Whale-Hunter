@@ -5,15 +5,38 @@ body {
 }
 
 /* .beer-detail-container { */
-  /* min-height: 80vh; */
+/* min-height: 80vh; */
 /* } */
 /* .beer-content { */
-  /* margin-top: 45vh; */
-  /* opacity: 0.95;
+/* margin-top: 45vh; */
+/* opacity: 0.95;
 } */
 
 .carousel {
   overflow: hidden;
+}
+/* .carousel-title {
+} */
+
+.slider-navigation-previous {
+  background-color: lightgrey;
+  margin-left: 3px;
+}
+.slider-navigation-next {
+  background-color: lightgrey;
+  margin-right: 3px;
+}
+.carousel-card-content {
+  min-height: 100%;
+  /* border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px; */
+  /* box-shadow: 1%; */
+}
+.slider-page {
+  color: lightgray;
 }
 * {
   box-sizing: border-box;
