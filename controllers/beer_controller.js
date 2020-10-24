@@ -492,9 +492,22 @@ router.get("/admin", function (req, res) {
     if(req.session.employee){
         db.Employee.findAll().then(employees => {
             const dbEmployeeJson = employees.map(employee => employee.toJSON());
-            var hbsObject = { employee: dbEmployeeJson };
-            console.log(hbsObject);
-            return res.render("admin",hbsObject);
+            db.Style.findAll().then(styles => {
+                const dbStylesJson = styles.map(style => style.toJSON()); 
+                db.Brewery.findAll().then(breweries => {
+                    const dbBreweryJson = breweries.map(brewery => brewery.toJSON()); 
+                    db.Beer.findAll().then(beers => {
+                        const dbBeerJson = beers.map(beer => beer.toJSON());
+                        var hbsObject = { 
+                            employee: dbEmployeeJson,
+                            style: dbStylesJson,
+                            brewery: dbBreweryJson,
+                            beer: dbBeerJson 
+                        };
+                        return res.render("admin",hbsObject);
+                    })
+                })
+            })    
         });
     } else {
         res.redirect("/employeelogin").status(401)
