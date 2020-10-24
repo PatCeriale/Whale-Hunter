@@ -92,6 +92,12 @@ router.get("/secretstuff", (req,res)=>{
 router.get("/sessiondata", (req,res)=>{
     res.json(req.session)
 })
+
+router.get('/logout', (req, res) => {
+    req.session.destroy();
+    return res.redirect("/")
+})
+
 // router.post('/login', (req, res) => {
 //     db.User.findOne({
 //         where: { email: req.body.email }
@@ -113,11 +119,6 @@ router.get("/sessiondata", (req,res)=>{
 //             return res.status(401).send('incorrect email or password')
 //         }
 //     })
-// })
-
-// router.get('/logout', (req, res) => {
-//     req.session.destroy();
-//     res.send('logged out')
 // })
 
 // router.get("/sessiondata", (req, res) => {
