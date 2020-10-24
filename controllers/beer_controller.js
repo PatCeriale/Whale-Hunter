@@ -57,7 +57,8 @@ router.post("/beers", function (req, res) {
         description: req.body.description,
         StyleId: req.body.StyleID,
         abv: req.body.abv,
-        ibu: req.body.ibu
+        ibu: req.body.ibu,
+        image: req.body.image
     }).then(function (dbBeer) {
         console.log(dbBeer);
         res.json(dbBeer)
