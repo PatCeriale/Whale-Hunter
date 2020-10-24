@@ -27,15 +27,33 @@
             <a class="navbar-item" href="/breweries">
                 Breweries
             </a>
+             {{#if user}}
             <a class="navbar-item" href="/sixpacks">
                 My Six Packs
             </a>
+            <a class="navbar-item" href="/userpost">
+                Create Post
+            </a>
+            <a class="navbar-item" href="/profile/{{user.user_name}}">
+                Profile
+            </a>
+            <a class="navbar-item" href="/Logout">
+                Logout
+            </a>
+            {{/if}}
+            {{#if employee}}
+            <a class="navbar-item" href="/Admin">
+                Admin
+            </a>
+            {{/if}}
+            {{#unless user}}
             <a class="navbar-item" href="/signup">
                 Sign Up
             </a>
             <a class="navbar-item" href="/login">
                 Log In
             </a>
+            {{/unless}}
         </div>
     </div>
 </nav>
