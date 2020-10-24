@@ -18,6 +18,17 @@ router.get('/styles', function (req, res) {
     })
 })
 
+//get details for one style
+router.get("/styles/:id", function (req, res) {
+    db.Style.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(style => {
+        res.json(style)
+    })
+})
+
 //create new style
 router.post('/styles/', function (req, res) {
     db.Style.create({
