@@ -43,13 +43,25 @@ app.use(
   })
 );
 
-var routes = require("./controllers/beer_controller.js");
-const userPost_routes = require("./controllers/post_controller.js");
+const admin_routes = require("./controllers/admin_controller.js");
 const authPost_routes = require("./controllers/auth_controller.js");
+const beer_routes = require("./controllers/beer_controller.js");
+const brewery_routes = require("./controllers/brewery_controller.js");
+const employee_routes = require("./controllers/employee_controller.js");
+const post_routes = require("./controllers/post_controller.js");
+const rating_routes = require("./controllers/rating_controller.js");
+const sixpack_routes = require("./controllers/sixpack_controller");
+const style_routes = require("./controllers/style_controller.js");
 
-app.use(routes);
-app.use(userPost_routes);
+app.use(admin_routes);
 app.use(authPost_routes);
+app.use(beer_routes);
+app.use(brewery_routes);
+app.use(employee_routes);
+app.use(post_routes);
+app.use(rating_routes);
+app.use(sixpack_routes);
+app.use(style_routes);
 
 var PORT = process.env.PORT || 8080;
 
