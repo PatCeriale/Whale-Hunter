@@ -7,7 +7,14 @@ var db = require("../models/");
 //================================================================================
 //Basic redirect route. May change later.
 router.get("/", function (req, res) {
-    res.redirect("/beers");
+    db.Post.findAll()
+        .then(function (dbPosts) {
+            console.log(dbPosts);
+            const dbPostsJson = dbPosts.map(post => post.toJSON());
+            var hbsObject = { post : dbPostsJson };
+            console.log("Post hbsObject", hbsObject);
+            return res.render("index", hbsObject);
+        });
 });
 
 //Get all beer
