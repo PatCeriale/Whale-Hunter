@@ -11,7 +11,11 @@ router.get("/", function (req, res) {
         .then(function (dbPosts) {
             console.log(dbPosts);
             const dbPostsJson = dbPosts.map(post => post.toJSON());
-            var hbsObject = { post : dbPostsJson };
+            var hbsObject = { 
+                post : dbPostsJson,
+                user : req.session.user,
+                employee: req.session.employee
+             };
             console.log("Post hbsObject", hbsObject);
             return res.render("index", hbsObject);
         });
