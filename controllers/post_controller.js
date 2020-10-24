@@ -4,7 +4,7 @@ var db = require("../models/");
 
 
 router.get("/userpost", function (req, res) {
-    return res.render("userpost");
+    return res.render("userpost",{ user: req.session.user });
 });
 
 router.post("/userpost", function (req, res) {
@@ -22,6 +22,7 @@ router.post("/userpost", function (req, res) {
         res.status(500).json(err);
       })
 });
+
 
 module.exports = router;
 
