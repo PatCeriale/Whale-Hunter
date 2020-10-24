@@ -22,8 +22,10 @@
         <a class="button is-hidden-touch" href="{{brewery.website}}">Website</a>
         <a class="button is-hidden-touch"
           href="http://maps.google.com/?daddr={{brewery.address_1}}+{{brewery.address_2}}+{{brewery.city}}+{{brewery.state}}+{{brewery.zip_code}}">Location</a>
-        <a class="is-hidden-desktop" href="tel:{{brewery.phone}}"><i class="fas fa-3x fa-phone-square"></i></a>&nbsp; &nbsp;
-        <a class="is-hidden-desktop" href="mailto:{{brewery.email}}"><i class="fas fa-3x fa-envelope"></i></a>&nbsp; &nbsp;
+        <a class="is-hidden-desktop" href="tel:{{brewery.phone}}"><i class="fas fa-3x fa-phone-square"></i></a>&nbsp;
+        &nbsp;
+        <a class="is-hidden-desktop" href="mailto:{{brewery.email}}"><i class="fas fa-3x fa-envelope"></i></a>&nbsp;
+        &nbsp;
         <a class="is-hidden-desktop" href="{{brewery.website}}"><i
             class="fas fa-3x fa-external-link-square-alt"></i></i></a>&nbsp; &nbsp;
         <a class="is-hidden-desktop"
@@ -51,12 +53,17 @@
             <div class="content">
               <p>AHAB: {{this.Ratings.length}} ABV: {{this.abv}} IBU: {{this.ibu}}</p>
             </div>
+            <footer class="card-footer">
+              <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth" value={{this.id}}>Add
+                To Six Pack</Button>
+            </footer>
           </div>
         </div>
       </div>
       {{/each}}
     </div>
-
   </div>
   </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/addbeersixpack.js"></script>
