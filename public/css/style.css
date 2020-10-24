@@ -4,13 +4,13 @@ body {
   font-family: "Barlow";
 }
 
-.beer-detail-container {
-  min-height: 80vh;
-}
-.beer-content {
-  margin-top: 45vh;
-  opacity: 0.95;
-}
+/* .beer-detail-container { */
+  /* min-height: 80vh; */
+/* } */
+/* .beer-content { */
+  /* margin-top: 45vh; */
+  /* opacity: 0.95;
+} */
 
 .carousel {
   overflow: hidden;

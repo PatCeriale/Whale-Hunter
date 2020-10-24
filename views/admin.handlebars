@@ -88,17 +88,19 @@
         <div class="column">
             <div class="box has-background-warning">
                 <h2 class="has-text-primary-light is-size-3">Styles</h2>
+                {{#each style}}
                 <div class="columns">
                     <div class="column is-small is-four-fifths">
-                        <pre>Id Style Name</pre>
+                        <pre><p>ID:{{this.id}}     Style Name:{{this.name}}</p></pre>
                     </div>
                     <div class="column">
                         <form class="delete-style-form">
-                            <input input type="hidden" class="id" type="text" value="id"><br>
+                            <input input type="hidden" class="user_id" type="text" value={{this.id}}><br>
                             <button type="submit" class="button is-black is-fullwidth">Delete</button>
                         </form>
                     </div>
                 </div>
+                {{/each}}
             </div>
         </div>
     </div>
@@ -181,7 +183,20 @@
         </div>
         <div class="column">
             <div class="box has-background-info">
-                <h2 class="has-text-primary-light is-size-3">Search Brewery</h2>
+                <h2 class="has-text-primary-light is-size-3">Breweries</h2>
+                {{#each brewery}}
+                <div class="columns">
+                    <div class="column is-small is-four-fifths">
+                        <pre><p>ID:{{this.id}}     Brewery Name:{{this.brewery_name}}</p></pre>
+                    </div>
+                    <div class="column">
+                        <form class="delete-brewery-form">
+                            <input input type="hidden" class="user_id" type="text" value={{this.id}}><br>
+                            <button type="submit" class="button is-black is-fullwidth">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
     </div>
@@ -252,7 +267,20 @@
         </div>
         <div class="column">
             <div class="box has-background-success">
-                <h2 class="has-text-primary-light is-size-3">Search Remove</h2>
+                <h2 class="has-text-primary-light is-size-3">Beers</h2>
+                {{#each beer}}
+                <div class="columns">
+                    <div class="column is-small is-four-fifths">
+                        <pre><p>ID:{{this.id}}     Beer Name:{{this.name}}</p></pre>
+                    </div>
+                    <div class="column">
+                        <form class="delete-beer-form">
+                            <input input type="hidden" class="user_id" type="text" value={{this.id}}><br>
+                            <button type="submit" class="button is-black is-fullwidth">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
     </div>

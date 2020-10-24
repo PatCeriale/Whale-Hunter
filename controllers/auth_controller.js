@@ -13,7 +13,9 @@ router.post('/signup', (req, res) => {
         user_name: req.body.user_name,
         password: req.body.password
     }).then(newUser => {
-        res.json(newUser)
+        const newUserJson = newUser.toJSON();
+        const hbsObject = {userNew : newUserJson};
+        return res.render("userlogin", hbsObject);
     }).catch(err => {
         console.log(err);
         res.status(500).send("server error")
@@ -31,7 +33,7 @@ router.post("/login", (req,res)=>{
                 user_name: user.user_name,
                 id:user.id
             }
-            return res.status(200).send(req.session)
+            return res.redirect("/")
         } else {
             return res.status(401).send("incorrect password");
         }

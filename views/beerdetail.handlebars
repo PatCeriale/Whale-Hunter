@@ -3,24 +3,25 @@
     <div class="card is-shady">
       <div class="card-image beer-detail-container">
         <figure class="image">
-          <img src="https://mybrewsupply.com/wp-content/uploads/2020/06/B317-1.jpg" alt="Placeholder image"
-            class="modal-button" data-target="modal-image2">
+          <img src="{{beer.image}}" alt="Image of {{beer.name}}">
         </figure>
       </div>
-      <div class="card-content has-background-light beer-content is-overlay">
+      <div class="card-content has-background-light beer-content">
         <div class="content"> 
-          <p class="m-0 is-size-7"><span class="has-text-danger is-size-5">4.7</span>/5</p>
-          <h4 class="title beer-title m-0">Beer Title</h4>
-          <h5 class="subtitle has-text-grey m-0 is-6">Brewery Name</h5>
-          <p class="m-0 is-size-7">IBU: <span class="beer-ibu">30</span></p>
-          <p class="is-size-7 m-0">ABV: <span class="beer-abv">6</span>%</p>
-          <p>Purus semper eget duis at tellus at urna condimentum mattis. Non blandit massa enim nec. Integer enim neque
-            volutpat ac tincidunt vitae semper quis.</p>
+          <p class="m-0 is-size-5"><span class="has-text-danger is-size-7">Ahab</span>{{numLikes}}</p>
+          <h4 class="title beer-title m-0">{{beer.name}}</h4>
+          <h5 class="subtitle m-0 is-6"><a href="/breweries/{{beer.Brewery.id}}">{{beer.Brewery.brewery_name}}</a></h5>
+          <p class="is-size-7 m-0">Style: <span class="beer-abv"><a href="/styles/{{beer.StyleId}}">{{beer.Style.name}}</a></span></p>
+          <p class="m-0 is-size-7">IBU: <span class="beer-ibu">{{beer.ibu}}</span></p>
+          <p class="is-size-7 m-0">ABV: <span class="beer-abv">{{beer.abv}}</span>%</p>
+          <p>{{beer.description}}</p>
           </div> 
       </div>
       <footer class="card-footer">
-        <span class=" card-footer-item button is-black is-medium is-fullwidth">Add To Six Pack</span>
+        <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth" value={{beer.id}}>Add To Six Pack</Button>
       </footer>
     </div>
   </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/addbeersixpack.js"></script>

@@ -11,7 +11,11 @@ router.get("/", function (req, res) {
         .then(function (dbPosts) {
             console.log(dbPosts);
             const dbPostsJson = dbPosts.map(post => post.toJSON());
-            var hbsObject = { post : dbPostsJson };
+            var hbsObject = { 
+                post : dbPostsJson,
+                user : req.session.user,
+                employee: req.session.employee
+             };
             console.log("Post hbsObject", hbsObject);
             return res.render("index", hbsObject);
         });
@@ -19,13 +23,15 @@ router.get("/", function (req, res) {
 
 //Get all beer
 router.get("/beers", function (req, res) {
-    db.Beer.findAll()
+    db.Beer.findAll({
+        include: [db.Rating,db.Style,db.Brewery]
+    })
         .then(function (dbBeers) {
             console.log(dbBeers);
             const dbBeersJson = dbBeers.map(beer => beer.toJSON());
             var hbsObject = { beer: dbBeersJson };
             console.log("Beer hbsObject", hbsObject);
-            return res.render("index", hbsObject);
+            return res.render("beers", hbsObject);
         });
 });
 
@@ -34,13 +40,11 @@ router.get("/beers/:id", function (req, res) {
     db.Beer.findOne({
         where: {
             id: req.params.id
-        }, include: [db.Rating]
+        }, include: [db.Rating,db.Style,db.Brewery]
     }).then(beer => {
         const dbBeerJson = beer.toJSON();
         var hbsObject = { beer: dbBeerJson, numLikes: beer.Ratings.length };
-        console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
+        return res.render("beerdetail", hbsObject);
     })
 })
 
@@ -53,7 +57,8 @@ router.post("/beers", function (req, res) {
         description: req.body.description,
         StyleId: req.body.StyleID,
         abv: req.body.abv,
-        ibu: req.body.ibu
+        ibu: req.body.ibu,
+        image: req.body.image
     }).then(function (dbBeer) {
         console.log(dbBeer);
         res.json(dbBeer)
@@ -96,12 +101,22 @@ router.get("/breweries/:id", function (req, res) {
             id: req.params.id
         }
     }).then(brewery => {
-        res.json(brewery)
-        const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
-        var hbsObject = { brewery: dbBreweryJson };
-        console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
+        const dbBreweryJson = brewery.toJSON();
+        db.Beer.findAll({
+            where: {
+                BreweryId: brewery.id
+            }, 
+            include: [db.Rating,db.Style]
+        }).then(beers => {
+            const dbBeerJson = beers.map(beer => beer.toJSON());
+            var hbsObject = {
+                brewery: dbBreweryJson,
+                breweryBeer: dbBeerJson
+            };
+            //res.json(hbsObject);
+            return res.render("brewerydetail", hbsObject);
+        })
+
     })
 })
 
@@ -477,9 +492,22 @@ router.get("/admin", function (req, res) {
     if(req.session.employee){
         db.Employee.findAll().then(employees => {
             const dbEmployeeJson = employees.map(employee => employee.toJSON());
-            var hbsObject = { employee: dbEmployeeJson };
-            console.log(hbsObject);
-            return res.render("admin",hbsObject);
+            db.Style.findAll().then(styles => {
+                const dbStylesJson = styles.map(style => style.toJSON()); 
+                db.Brewery.findAll().then(breweries => {
+                    const dbBreweryJson = breweries.map(brewery => brewery.toJSON()); 
+                    db.Beer.findAll().then(beers => {
+                        const dbBeerJson = beers.map(beer => beer.toJSON());
+                        var hbsObject = { 
+                            employee: dbEmployeeJson,
+                            style: dbStylesJson,
+                            brewery: dbBreweryJson,
+                            beer: dbBeerJson 
+                        };
+                        return res.render("admin",hbsObject);
+                    })
+                })
+            })    
         });
     } else {
         res.redirect("/employeelogin").status(401)
