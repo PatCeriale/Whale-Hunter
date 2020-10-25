@@ -58,7 +58,7 @@
                                         <input input type="hidden" class="edit_employee" type="text" value={{this.id}}><br>
                                         <button type="submit" class="button is-black is-small">Edit</button>
                                     </form>
-                                </div>                            
+                                </div>                         
                                 <div class="level-item">
                                     <form class="delete-employee-form">
                                         <input input type="hidden" class="delete_employee" type="text" value={{this.id}}><br>
@@ -338,3 +338,48 @@
 <script src="/js/brewerypost.js"></script>
 <script src="/js/beerpost.js"></script>
 <script src="/js/stylepost.js"></script>
+<script src="/js/adminmodals.js"></script>
+
+<div id="employee-modal"class="modal is-clipped">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Edit Employee</p>
+      <button class="delete close-modal" aria-label="close" ></button>
+    </header>
+    <section class="modal-card-body">
+      <form action="" method="put" id="employee-put-form">
+                    <div class="field">
+                        <label class="label is-small">User Name</label>
+                        <div class="control">
+                            <input class="input is-small" id="user_name_modal" name="user_name" type="text" placeholder="User Name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Password</label>
+                        <div class="control">
+                            <input class="input is-small" name="password" type="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">First Name</label>
+                        <div class="control">
+                            <input class="input is-small" id="first_name_modal" name="first_name" type="text" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label is-small">Last Name</label>
+                        <div class="control">
+                            <input class="input is-small" id="last_name_modal" name="last_name" type="text" placeholder="Last Name">
+                            <input type="hidden" name="active" value="true">
+                        </div>
+                    </div>
+                </form>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-black" type="submit" >Save changes</button>
+      </form>
+      <button class="button close-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
