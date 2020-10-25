@@ -66,7 +66,7 @@ router.get("/user/sixpacks/", function (req, res) {
         var hbsObject = { 
             sixpack: dbSixpackJson,
             user : req.session.user,
-            employee: req.session.employee
+            employee: req.session.employee,
          };
         console.log(hbsObject)
         //return res.json(hbsObject);
@@ -74,13 +74,14 @@ router.get("/user/sixpacks/", function (req, res) {
     })
 })
 
-// Switch to new sixpack
+// Switch to new sixpack and view sixpack
 router.get('/user/sixpacks/:id', function (req, res) {
         req.session.sixpack = {
             id: req.params.id
         }
         res.redirect("/user/sixpack");
 })
+
 
 //create new sixpack
 router.post('/sixpacks', function (req, res) {
