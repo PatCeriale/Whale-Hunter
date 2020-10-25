@@ -1,0 +1,93 @@
+<section class="section">
+    <div class="container has-text-centered">
+        <h1 class="title">Profile for {{user.user_name}}</h1>
+        <div class="columns ">
+            <div class="column left has-text-centered">
+                    <h2 class="title is-4">Posts I've Made</h2><a href="/userpost">
+                    {{#each post}}
+                    <div class="column is-one-half">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by5">
+                                    <img src="{{this.image}}" alt="{{this.title}}">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <p><span class="title is-5">{{this.title}}</span> <span
+                                                class="subtitle is-7">@{{this.user_name}}</span></p>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <p>{{this.description}}
+                                        <a href="#">#{{this.beer_name}}</a> <a href="#">#{{this.brewery_name}}</a>
+                                        <br>
+                                        <time datetime="{{this.createdAt}}">{{this.createdAt}}</time>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+            </div>
+            <div class="column right has-text-centered">
+                <h2 class="title is-4">Beers I've Liked</h2>
+                <div class="columns is-centered is-multiline is-flex-wrap-wrap"></div>
+                    {{#each beer}}
+                    <div class="column is-one-half">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-square">
+                                    <img src="{{this.Beer.image}}" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <p class="title is-4"><a href="/beers/{{this.Beer.id}}">{{this.Beer.name}}</a></p>
+                                        <p class="subtitle is-6"><a
+                                                href="/styles/{{this.Beer.Style.id}}">{{this.Beer.Style.name}}</a></p>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="level is-mobile">
+                                        <div class="level-left">
+                                            <div class="level-item px-0 mx-0">
+                                                <figure class="image is-24x24 px-0 mx-1">
+                                                    <img class="ahab is-clickable" src="/images/ahab.png"
+                                                        data-index={{this.id}}>
+                                                </figure>
+                                            </div>
+                                            <div class="level-item">
+                                                <p>{{this.Beer.Ratings.length}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="level-right">
+                                            <div class="level-item">
+                                                <p>ABV: {{this.Beer.abv}}%</p>
+                                            </div>
+                                            <div class="level-item">
+                                                <p>IBU: {{this.Beer.ibu}}</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <footer class="card-footer">
+                                    <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth"
+                                        value={{this.Beer.id}}>Add
+                                        To Six Pack</Button>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/addbeersixpack.js"></script>
