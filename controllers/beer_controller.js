@@ -47,7 +47,13 @@ router.get("/beers/:id", function (req, res) {
         }, include: [db.Rating,db.Style,db.Brewery]
     }).then(beer => {
         const dbBeerJson = beer.toJSON();
-        var hbsObject = { beer: dbBeerJson, numLikes: beer.Ratings.length };
+        var hbsObject = { 
+            beer: dbBeerJson, 
+            numLikes: 
+            beer.Ratings.length,
+            user : req.session.user, 
+            employee: req.session.employee
+        };
         return res.render("beerdetail", hbsObject);
     })
 })
