@@ -40,10 +40,13 @@
                     </div>
                 </div>
                 <footer class="card-footer">
-                    <span class=" card-footer-item button is-black is-medium is-fullwidth">Remove From Six Pack</span>
+                    <span class="delete-beer card-footer-item button is-black is-medium is-fullwidth" data-beer={{this.id}} data-sixpack={{../this.id}}>Remove From Six Pack</span>
                 </footer>
             </div>
             {{/each}}
             {{/each}}
         </div>
     </section>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/ahabclick.js"></script>
+<script src="/js/removebeersixpack.js"></script>
