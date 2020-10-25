@@ -101,13 +101,13 @@ router.post('/sixpacks', function (req, res) {
 router.put('/sixpacks/:id', function (req, res) {
     db.Sixpack.findOne({
         where: {
-            id: req.params.id
+            id: req.session.sixpack.id
         }
     }).then(updateSixpack => {
         if (!updateSixpack) {
             res.status(404).json(updateSixpack)
         } else {
-            updateSixpack.addBeer(req.body.beer_id)
+            updateSixpack.addBeer(req.params.id)
             res.json(updateSixpack)
         }
     }).catch(err => {
