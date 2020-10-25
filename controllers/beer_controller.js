@@ -95,19 +95,47 @@ router.post("/beers", function (req, res) {
         res.json(dbBeer)
     });
 });
-//Does nothing yet
+//Update existing beer
 router.put("/beers/update/:id", function (req, res) {
     db.Beer.update({
-        devoured: true
-    },
-        {
-            where: {
-                id: req.params.id
-            }
+        name: req.body.name,
+        description: req.body.description,
+        abv: req.body.abv,
+        ibu: req.body.ibu,
+        image: req.body.image
+    }, {
+        where: {
+            id: req.params.id
         }
-    ).then(function (dbBeer) {
-        res.json("updated");
-    });
-});
+    }).then(updateBeer => {
+        if (updateBeer[0] === 0) {
+            res.status(404).json(updateBeer)
+        } else {
+            res.json(updateBeer)
+        }
+    }).catch(err => {
+        console.log(err)
+        res.status(500).json(err);
+    })
+})
+
+//Delete Beer
+router.delete("/beers/update/:id", function (req, res) {
+    db.Beer.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(deleteBeer => {
+        if (deleteBeer === 0) {
+            res.status(404).json(deleteBeer)
+        } else {
+            //TODO:We need to add the page to redirect to here
+            res.redirect("/admin");
+        }
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
+})
 
 module.exports = router;

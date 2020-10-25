@@ -48,6 +48,28 @@ router.post('/styles/', function (req, res) {
     })
 })
 
+//Update Style
+router.put('/styles/:id', function (req, res) {
+    db.Style.update({
+        name: req.body.name,
+        description: req.body.description,
+        image: req.body.image
+    }, {
+        where: {
+            id: req.params.id
+        }
+    }).then(updateStyle => {
+        if (updateStyle[0] === 0) {
+            res.status(404).json(updateStyle)
+        } else {
+            res.status(200).json(updateStyle)
+        }
+    }).catch(err => {
+        console.log(err)
+        res.status(500).json(err);
+    })
+})
+
 //Delete Style
 router.delete("/styles/:id", function (req, res) {
     db.Style.destroy({
