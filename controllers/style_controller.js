@@ -37,7 +37,8 @@ router.get("/styles/:id", function (req, res) {
 router.post('/styles/', function (req, res) {
     db.Style.create({
         name: req.body.name,
-        description: req.body.description
+        description: req.body.description,
+        image: req.body.image
     }).then(newStyle => {
         console.log(newStyle)
         res.redirect("/admin");
