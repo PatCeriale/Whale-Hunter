@@ -5,7 +5,7 @@
         <div class="column is-10 ml-2">
             <div class="columns">
                 <div class="column is-8">
-                    <h1 class="title">Hey {{user.user_name}}, here are all your six packs</h1>
+                    <h1 class="title">Hey {{user.user_name}}, here are all your six packs!</h1>
                 </div>
                 <div class="column">
                     <form action="/sixpacks" method="post">
@@ -22,15 +22,38 @@
             </div>
             {{#each sixpack}}
             <article class="media">
-                <div class="media-content">
+                <div class="media-left">
                     <div class="content">
                         <h2 class="title is-4"><a href="/user/sixpacks/{{this.id}}">{{this.name}}</a></h2>
                     </div>
                 </div>
+                <div class="media-content">
+                    <div class="content ml-6">
+                        <p>{{#each Beers}}<span class="mr-2">{{this.name}}</span> {{/each}}</p>
+                    </div>
+                </div>
                 <div class="media-right">
+                    <div class="level">
+                        <div class="level-left">
+                            <div class="level-item mr-4">
+                                <a href="/user/sixpacks/{{this.id}}">
+                                <button class="button is-block is-black">Edit</button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="level-right">
+                            <div class="level-item">
+                                <button class="delete-sixpack button is-block is-black" value="{{this.id}}">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
                 </div>
             </article>
             {{/each}}
         </div>
     </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/sixpacks.js"></script>
