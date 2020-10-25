@@ -51,19 +51,41 @@
               </div>
             </div>
             <div class="content">
-              <p>AHAB: {{this.Ratings.length}} ABV: {{this.abv}} IBU: {{this.ibu}}</p>
+              <div class="level is-mobile">
+                <div class="level-left">
+                  <div class="level-item px-0 mx-0">
+                    <figure class="image is-24x24 px-0 mx-1">
+                      <img class="ahab is-clickable" src="/images/ahab.png" data-index={{this.id}}>
+                    </figure>
+                  </div>
+                  <div class="level-item">
+                    <p>{{this.Ratings.length}}</p>
+                  </div>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <p>ABV: {{this.abv}}%</p>
+                  </div>
+                  <div class="level-item">
+                    <p>IBU: {{this.ibu}}</p>
+                  </div>
+                </div>
+
+
+              </div </div>
+              <footer class="card-footer">
+                <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth"
+                  value={{this.id}}>Add
+                  To Six Pack</Button>
+              </footer>
             </div>
-            <footer class="card-footer">
-              <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth" value={{this.id}}>Add
-                To Six Pack</Button>
-            </footer>
           </div>
         </div>
+        {{/each}}
       </div>
-      {{/each}}
     </div>
-  </div>
   </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/addbeersixpack.js"></script>
+<script src="/js/ahabclick.js"></script>
