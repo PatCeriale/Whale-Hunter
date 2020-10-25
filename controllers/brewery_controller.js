@@ -132,8 +132,8 @@ router.delete("/breweries/:id", function (req, res) {
         if (deleteBrewery === 0) {
             res.status(404).json(deleteBrewery)
         } else {
-            //TODO:We need to add the page to redirect to here
-            res.redirect("/");
+            
+            res.status(200).json(deleteBrewery)
         }
     }).catch(err => {
         console.log(err);
