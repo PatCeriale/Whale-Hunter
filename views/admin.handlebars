@@ -11,51 +11,64 @@
     <div class="columns">
         <div class="column">
             <div class="box has-background-primary">
-                <h2 class="has-text-primary-light is-size-3">Add Employee</h2>
+                <h2 class="has-text-primary-light is-size-4">Add Employee</h2>
                 <form action="/employees" method="post">
                     <div class="field">
                         <label class="label is-small">User Name</label>
                         <div class="control">
-                            <input class="input" name="user_name" type="text" placeholder="User Name">
+                            <input class="input is-small" name="user_name" type="text" placeholder="User Name">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Password</label>
                         <div class="control">
-                            <input class="input" name="password" type="password" placeholder="Password">
+                            <input class="input is-small" name="password" type="password" placeholder="Password">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">First Name</label>
                         <div class="control">
-                            <input class="input" name="first_name" type="text" placeholder="First Name">
+                            <input class="input is-small" name="first_name" type="text" placeholder="First Name">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Last Name</label>
                         <div class="control">
-                            <input class="input" name="last_name" type="text" placeholder="Last Name">
+                            <input class="input is-small" name="last_name" type="text" placeholder="Last Name">
                             <input type="hidden" name="active" value="true">
                         </div>
                     </div>
-
-                    <button class="button is-block is-black is-fullwidth is-medium" type="submit">Add Employee</button>
+                    <button class="button is-block is-black is-fullwidth is-small" type="submit">Add Employee</button>
                 </form>
             </div>
         </div>
         <div class="column">
             <div class="box has-background-primary">
-                <h2 class="has-text-primary-light is-size-3">Employees</h2>
+                <h2 class="has-text-primary-light is-size-4">Employees:</h2>
                 {{#each employee}}
                 <div class="columns">
                     <div class="column is-small is-four-fifths">
                         <pre><p>ID:{{this.id}}     User Name:{{this.user_name}}     Name:{{this.first_name}} {{this.last_name}}</p></pre>
                     </div>
                     <div class="column">
-                        <form class="delete-employee-form">
-                            <input input type="hidden" class="user_id" type="text" value={{this.id}}><br>
-                            <button type="submit" class="button is-black is-fullwidth">Delete</button>
-                        </form>
+                        <div class="level">
+                            <div class="level-left">
+                                <level-item>
+                                    <form class="edit-employee-form">
+                                        <input input type="hidden" class="edit_employee" type="text" value={{this.id}}><br>
+                                        <button type="submit" class="button is-black is-small">Edit</button>
+                                    </form>
+                                </level-item>
+                            </div>
+                            <div class="level-right">
+                                <div class="level-ite">
+                                    <form class="delete-employee-form">
+                                        <input input type="hidden" class="delete_employee" type="text" value={{this.id}}><br>
+                                        <button type="submit" class="button is-black is-small">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
@@ -66,47 +79,61 @@
     <div class="columns">
         <div class="column">
             <div class="box has-background-warning">
-                <h2 class="has-text-primary-light is-size-3">Add Style</h2>
+                <h2 class="has-text-primary-light is-size-4">Add Style</h2>
                 <form action="/styles/" method="post">
                     <div class="field">
                         <label class="label is-small">User Name</label>
                         <div class="control">
-                            <input class="input" name="name" type="text" placeholder="Style Name">
+                            <input class="input is-small" name="name" type="text" placeholder="Style Name">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Description</label>
                         <div class="control">
-                            <textarea class="is-medium textarea" name="description" rows="4"
+                            <textarea class="is-small textarea" name="description" rows="4"
                                 placeholder="Style Description"></textarea>
                         </div>
                     </div>
                     <div>
-                        <span id="upload_style_widget" class="button is-black is-fullwidth">Upload Image</span>
+                        <span id="upload_style_widget" class="button is-black is-small is-fullwidth">Upload Image</span>
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label>Image</label>
-                            <input class="input is-medium" name="image" type="text" id="url_style_text">
+                            <label class="label is-small">Image</label>
+                            <input class="input is-small" name="image" type="text" id="url_style_text">
                         </div>
                     </div>
-                    <button class="button is-block is-black is-fullwidth is-medium" type="submit">Add Style</button>
+                    <button class="button is-block is-black is-fullwidth is-small" type="submit">Add Style</button>
                 </form>
             </div>
         </div>
         <div class="column">
             <div class="box has-background-warning">
-                <h2 class="has-text-primary-light is-size-3">Styles</h2>
+                <h2 class="has-text-primary-light is-size-4">Styles:</h2>
                 {{#each style}}
                 <div class="columns">
                     <div class="column is-small is-four-fifths">
                         <pre><p>ID:{{this.id}}     Style Name:{{this.name}}</p></pre>
                     </div>
                     <div class="column">
-                        <form class="delete-style-form">
-                            <input input type="hidden" class="user_id" type="text" value={{this.id}}><br>
-                            <button type="submit" class="button is-black is-fullwidth">Delete</button>
-                        </form>
+                        <div class="level">
+                            <div class="level-left">
+                                <level-item>
+                                    <form class="edit-style-form">
+                                        <input input type="hidden" class="edit_employee" type="text" value={{this.id}}><br>
+                                        <button type="submit" class="button is-black is-small">Edit</button>
+                                    </form>
+                                </level-item>
+                            </div>
+                            <div class="level-right">
+                                <div class="level-ite">
+                                    <form class="delete-style-form">
+                                        <input input type="hidden" class="delete_style" type="text" value={{this.id}}><br>
+                                        <button type="submit" class="button is-black is-small">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
@@ -235,13 +262,13 @@
                     <div class="field">
                         <div class="control">
                             <label>Description</label>
-                            <textarea class="is-medium textarea" name="description" rows="3" 
+                            <textarea class="is-medium textarea" name="description" rows="3"
                                 placeholder="Description"></textarea>
                         </div>
                     </div>
                     <div class="field is-horizontal">
                         <div class="control">
-                             <label class="label is-small">ABV</label>
+                            <label class="label is-small">ABV</label>
                             <input class="input" name="abv" type="text" placeholder="ABV">
                         </div>
                         <div class="control">
