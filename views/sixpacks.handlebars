@@ -24,7 +24,7 @@
             <article class="media">
                 <div class="media-left">
                     <div class="content">
-                        <h2 class="title is-4">{{this.name}}</h2>
+                        <h2 class="title is-4">{{this.id}}: {{this.name}}</h2>
                     </div>
                 </div>
                 <div class="media-content">
@@ -34,16 +34,17 @@
                 </div>
                 <div class="media-right">
                     <div class="level">
-                        <div class="level-left">
+                         <div class="level-left">
                             <div class="level-item mr-4">
                                 <a href="/user/sixpacks/{{this.id}}">
-                                <button class="button is-block is-black">Edit</button>
+                                <button class="button is-block is-small is-black">Edit</button>
                                 </a>
                             </div>
                         </div>
+                        
                         <div class="level-right">
                             <div class="level-item">
-                                <button class="delete-sixpack button is-block is-black" value="{{this.id}}">Delete</button>
+                                <button class="delete-sixpack button is-small is-block is-black" value="{{this.id}}">Delete</button>
                             </div>
                         </div>
                     </div>
