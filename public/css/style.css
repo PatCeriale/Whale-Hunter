@@ -96,3 +96,7 @@ body {
   min-height: 100%;
   width: auto;
 }
+
+.brewery-description {
+  float: left;
+}
