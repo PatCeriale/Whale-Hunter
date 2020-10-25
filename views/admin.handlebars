@@ -46,22 +46,20 @@
             <div class="box has-background-primary">
                 <h2 class="has-text-primary-light is-size-4">Employees:</h2>
                 {{#each employee}}
-                <div class="columns">
-                    <div class="column is-small is-four-fifths">
-                        <pre><p>ID:{{this.id}}     User Name:{{this.user_name}}     Name:{{this.first_name}} {{this.last_name}}</p></pre>
+                <div class="columns is-mobile">
+                    <div class="column is-small is-8">
+                        <pre><p>ID:{{this.id}} Name:{{this.first_name}} {{this.last_name}}</p></pre>
                     </div>
-                    <div class="column">
-                        <div class="level">
-                            <div class="level-left">
-                                <level-item>
+                    <div class="column is-4">
+                        <div class="level is-mobile">
+                            <div class="level-right">
+                                <div class="level-item">
                                     <form class="edit-employee-form">
                                         <input input type="hidden" class="edit_employee" type="text" value={{this.id}}><br>
                                         <button type="submit" class="button is-black is-small">Edit</button>
                                     </form>
-                                </level-item>
-                            </div>
-                            <div class="level-right">
-                                <div class="level-ite">
+                                </div>                            
+                                <div class="level-item">
                                     <form class="delete-employee-form">
                                         <input input type="hidden" class="delete_employee" type="text" value={{this.id}}><br>
                                         <button type="submit" class="button is-black is-small">Delete</button>
@@ -111,22 +109,20 @@
             <div class="box has-background-warning">
                 <h2 class="has-text-primary-light is-size-4">Styles:</h2>
                 {{#each style}}
-                <div class="columns">
-                    <div class="column is-small is-four-fifths">
-                        <pre><p>ID:{{this.id}}     Style Name:{{this.name}}</p></pre>
+                <div class="columns is-mobile">
+                    <div class="column is-small is-8">
+                        <pre><p>ID:{{this.id}} Style Name:{{this.name}}</p></pre>
                     </div>
-                    <div class="column">
-                        <div class="level">
+                    <div class="column is-4">
+                        <div class="level is-mobile">
                             <div class="level-left">
-                                <level-item>
+                                <div class="level-item">
                                     <form class="edit-style-form">
-                                        <input input type="hidden" class="edit_employee" type="text" value={{this.id}}><br>
+                                        <input input type="hidden" class="edit_style" type="text" value={{this.id}}><br>
                                         <button type="submit" class="button is-black is-small">Edit</button>
                                     </form>
-                                </level-item>
-                            </div>
-                            <div class="level-right">
-                                <div class="level-ite">
+                                </div>                            
+                                <div class="level-item">
                                     <form class="delete-style-form">
                                         <input input type="hidden" class="delete_style" type="text" value={{this.id}}><br>
                                         <button type="submit" class="button is-black is-small">Delete</button>
@@ -143,93 +139,105 @@
     <div class="columns">
         <div class="column">
             <div class="box has-background-info">
-                <h2 class="has-text-primary-light is-size-3">Add Brewery</h2>
+                <h2 class="has-text-primary-light is-size-4">Add Brewery</h2>
                 <form action="/breweries" method="post">
                     <div class="field">
                         <label class="label is-small">Brewery Name</label>
                         <div class="control">
-                            <input class="input" name="brewery_name" type="text" placeholder="Brewery Name">
+                            <input class="input is-small" name="brewery_name" type="text" placeholder="Brewery Name">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Address</label>
                         <div class="control">
-                            <input class="input" name="address_1" type="text" placeholder="Address Line 1">
+                            <input class="input is-small" name="address_1" type="text" placeholder="Address Line 1">
                         </div>
                     </div>
                     <div class="field">
                         <div class="control">
-                            <input class="input" name="address_2" type="text" placeholder="Address Line 2">
+                            <input class="input is-small" name="address_2" type="text" placeholder="Address Line 2">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">City</label>
                         <div class="control">
-                            <input class="input" name="city" type="text" placeholder="City">
+                            <input class="input is-small" name="city" type="text" placeholder="City">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">State</label>
                         <div class="control">
-                            <input class="input" name="state" type="text" placeholder="State">
+                            <input class="input is-small" name="state" type="text" placeholder="State">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Zip Code</label>
                         <div class="control">
-                            <input class="input" name="zip_code" type="text" placeholder="Zip Code">
+                            <input class="input is-small" name="zip_code" type="text" placeholder="Zip Code">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Phone</label>
                         <div class="control">
-                            <input class="input" name="phone" type="text" placeholder="Phone">
+                            <input class="input is-small" name="phone" type="text" placeholder="Phone">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Email</label>
                         <div class="control">
-                            <input class="input" name="email" type="email" placeholder="Email">
+                            <input class="input is-small" name="email" type="email" placeholder="Email">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Website</label>
                         <div class="control">
-                            <input class="input" name="website" type="text" placeholder="Website">
+                            <input class="input is-small" name="website" type="text" placeholder="Website">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Description</label>
                         <div class="control">
-                            <input class="input" name="description" type="text" placeholder="Description">
+                            <input class="input is-small" name="description" type="text" placeholder="Description">
                         </div>
                     </div>
                     <div>
-                        <span id="upload_brewery_widget" class="button is-black is-fullwidth">Upload Image</span>
+                        <span id="upload_brewery_widget" class="button is-black is-small is-fullwidth">Upload Image</span>
                     </div>
                     <div class="field">
                         <div class="control">
                             <label>Image</label>
-                            <input class="input is-medium" name="image" type="text" id="url_brewery_text">
+                            <input class="input is-small" name="image" type="text" id="url_brewery_text">
                         </div>
                     </div>
-                    <button class="button is-block is-black is-fullwidth is-medium" type="submit">Add Brewery</button>
+                    <button class="button is-block is-black is-fullwidth is-small" type="submit">Add Brewery</button>
                 </form>
             </div>
         </div>
         <div class="column">
             <div class="box has-background-info">
-                <h2 class="has-text-primary-light is-size-3">Breweries</h2>
+                <h2 class="has-text-primary-light is-size-4">Breweries</h2>
                 {{#each brewery}}
-                <div class="columns">
-                    <div class="column is-small is-four-fifths">
-                        <pre><p>ID:{{this.id}}     Brewery Name:{{this.brewery_name}}</p></pre>
+                <div class="columns is-mobile">
+                    <div class="column is-small is-8">
+                        <pre><p>ID:{{this.id}} Brewery Name:{{this.brewery_name}}</p></pre>
                     </div>
-                    <div class="column">
-                        <form class="delete-brewery-form">
-                            <input input type="hidden" class="user_id" type="text" value={{this.id}}><br>
-                            <button type="submit" class="button is-black is-fullwidth">Delete</button>
-                        </form>
+                    <div class="column is-4">
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <form class="edit-beer-form">
+                                        <input input type="hidden" class="edit_brewery" type="text" value={{this.id}}><br>
+                                        <button type="submit" class="button is-black is-small">Edit</button>
+                                    </form>
+                                </div>                            
+                                <div class="level-item">
+                                    <form class="delete-beer-form">
+                                        <input input type="hidden" class="delete_brewery" type="text" value={{this.id}}><br>
+                                        <button type="submit" class="button is-black is-small">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
@@ -238,97 +246,85 @@
     </div>
     <div class="columns">
         <div class="column">
-            <div class="box has-background-info">
-                <h2 class="has-text-primary-light is-size-3">Update Brewery</h2>
-            </div>
-        </div>
-        <div class="column">
-            <div class="box has-background-info">
-                <h2 class="has-text-primary-light is-size-3">Remove Brewery</h2>
-            </div>
-        </div>
-    </div>
-    <div class="columns">
-        <div class="column">
             <div class="box has-background-success">
-                <h2 class="has-text-primary-light is-size-3">Add Beer</h2>
+                <h2 class="has-text-primary-light is-size-4">Add Beer</h2>
                 <form action="/beers" method="post">
                     <div class="field">
                         <label class="label is-small">Beer Name</label>
                         <div class="control">
-                            <input class="input" name="name" type="text" placeholder="Beer Name">
+                            <input class="input is-small" name="name" type="text" placeholder="Beer Name">
                         </div>
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label>Description</label>
-                            <textarea class="is-medium textarea" name="description" rows="3"
+                            <label class="label is-small">Description</label>
+                            <textarea class="is-small textarea" name="description" rows="3"
                                 placeholder="Description"></textarea>
                         </div>
                     </div>
                     <div class="field is-horizontal">
                         <div class="control">
                             <label class="label is-small">ABV</label>
-                            <input class="input" name="abv" type="text" placeholder="ABV">
+                            <input class="input is-small" name="abv" type="text" placeholder="ABV">
                         </div>
                         <div class="control">
                             <label class="label is-small">IBU</label>
-                            <input class="input" name="ibu" type="text" placeholder="IBU">
+                            <input class="input is-small" name="ibu" type="text" placeholder="IBU">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Brewery</label>
                         <div class="control">
-                            <input class="input" name="BreweryID" type="text" placeholder="Brewery">
+                            <input class="input is-small" name="BreweryID" type="text" placeholder="Brewery">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label is-small">Style</label>
                         <div class="control">
-                            <input class="input" name="StyleID" type="text" placeholder="Style">
+                            <input class="input is-small" name="StyleID" type="text" placeholder="Style">
                         </div>
                     </div>
                     <div>
-                        <span id="upload_beer_widget" class="button is-black is-fullwidth">Upload Image</span>
+                        <span id="upload_beer_widget" class="button is-black is-small is-fullwidth">Upload Image</span>
                     </div>
                     <div class="field">
                         <div class="control">
-                            <label>Image</label>
-                            <input class="input is-medium" name="image" type="text" id="url_beer_text">
+                            <label class="label is-small">Image</label>
+                            <input class="input is-small" name="image" type="text" id="url_beer_text">
                         </div>
                     </div>
-                    <button class="button is-block is-black is-fullwidth is-medium" type="submit">Add Beer</button>
+                    <button class="button is-block is-black is-fullwidth is-small" type="submit">Add Beer</button>
                 </form>
             </div>
         </div>
         <div class="column">
             <div class="box has-background-success">
-                <h2 class="has-text-primary-light is-size-3">Beers</h2>
+                <h2 class="has-text-primary-light is-size-4">Beers</h2>
                 {{#each beer}}
-                <div class="columns">
-                    <div class="column is-small is-four-fifths">
+                <div class="columns is-mobile">
+                    <div class="column is-small is-8">
                         <pre><p>ID:{{this.id}}     Beer Name:{{this.name}}</p></pre>
                     </div>
-                    <div class="column">
-                        <form class="delete-beer-form">
-                            <input input type="hidden" class="user_id" type="text" value={{this.id}}><br>
-                            <button type="submit" class="button is-black is-fullwidth">Delete</button>
-                        </form>
+                    <div class="column is-4">
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <form class="edit-beer-form">
+                                        <input input type="hidden" class="edit_beer" type="text" value={{this.id}}><br>
+                                        <button type="submit" class="button is-black is-small">Edit</button>
+                                    </form>
+                                </div>                            
+                                <div class="level-item">
+                                    <form class="delete-beer-form">
+                                        <input input type="hidden" class="delete_beer" type="text" value={{this.id}}><br>
+                                        <button type="submit" class="button is-black is-small">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
-            </div>
-        </div>
-    </div>
-    <div class="columns">
-        <div class="column">
-            <div class="box has-background-success">
-                <h2 class="has-text-primary-light is-size-3">Update Beer</h2>
-            </div>
-        </div>
-        <div class="column">
-            <div class="box has-background-success">
-                <h2 class="has-text-primary-light is-size-3">Remove Remove</h2>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ $(document).ready(function() {
     $(".delete-brewery-form").on("submit", function(event) {
       event.preventDefault();
       
-      const brewery_id = $(this).children(".user_id").val();
+      const brewery_id = $(this).children(".delete_brewery").val();
     
     
       $.ajax({
