@@ -11,7 +11,11 @@ router.get('/breweries', function (req, res) {
     db.Brewery.findAll().then(brewery => {
         console.log(brewery);
         const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
-        var hbsObject = { brewery: dbBreweryJson };
+        var hbsObject = { 
+            brewery: dbBreweryJson,
+            user : req.session.user,
+            employee: req.session.employee
+         };
         console.log("Brewery hbsObject", hbsObject);
         return res.render("breweries", hbsObject);
     })
@@ -34,7 +38,9 @@ router.get("/breweries/:id", function (req, res) {
             const dbBeerJson = beers.map(beer => beer.toJSON());
             var hbsObject = {
                 brewery: dbBreweryJson,
-                breweryBeer: dbBeerJson
+                breweryBeer: dbBeerJson,
+                user : req.session.user,
+                employee: req.session.employee
             };
             //res.json(hbsObject);
             return res.render("brewerydetail", hbsObject);
