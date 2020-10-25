@@ -39,6 +39,27 @@ router.get("/beers", function (req, res) {
         });
 });
 
+//Get all beer
+router.get("/beers/styles/:id", function (req, res) {
+    db.Beer.findAll({
+        where: {
+        StyleId: req.params.id
+    },
+        include: [db.Rating,db.Style,db.Brewery]
+    })
+        .then(function (dbBeers) {
+            console.log(dbBeers);
+            const dbBeersJson = dbBeers.map(beer => beer.toJSON());
+            var hbsObject = { 
+                beer: dbBeersJson,
+                user : req.session.user,
+                employee: req.session.employee
+             };
+            console.log("Beer hbsObject", hbsObject);
+            return res.render("beers", hbsObject);
+        });
+});
+
 //get details for one beer
 router.get("/beers/:id", function (req, res) {
     db.Beer.findOne({
