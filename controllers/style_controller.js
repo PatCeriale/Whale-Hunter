@@ -80,8 +80,8 @@ router.delete("/styles/:id", function (req, res) {
         if (deleteStyle === 0) {
             res.status(404).json(deleteStyle)
         } else {
-            //TODO:We need to add the page to redirect to here
-            res.redirect("/");
+            
+            res.status(200).json(deleteStyle)
         }
     }).catch(err => {
         console.log(err);
