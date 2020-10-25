@@ -29,7 +29,11 @@ router.get("/beers", function (req, res) {
         .then(function (dbBeers) {
             console.log(dbBeers);
             const dbBeersJson = dbBeers.map(beer => beer.toJSON());
-            var hbsObject = { beer: dbBeersJson };
+            var hbsObject = { 
+                beer: dbBeersJson,
+                user : req.session.user,
+                employee: req.session.employee
+             };
             console.log("Beer hbsObject", hbsObject);
             return res.render("beers", hbsObject);
         });

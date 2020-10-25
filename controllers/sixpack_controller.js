@@ -11,7 +11,11 @@ router.get('/sixpacks', function (req, res) {
     db.Sixpack.findAll().then(sixpack => {
         res.json(sixpack)
         const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
-        var hbsObject = { sixpack: dbSixpackJson };
+        var hbsObject = { 
+            sixpack: dbSixpackJson,
+            user : req.session.user,
+            employee: req.session.employee
+             };
         console.log(hbsObject)
         return res.json(hbsObject);
         // return res.render("index", hbsObject);
@@ -20,6 +24,7 @@ router.get('/sixpacks', function (req, res) {
 
 //Get the current sixpack in user session
 router.get("/user/sixpack/", function (req, res) {
+    if(req.session.user && req.session.sixpack){      
     db.Sixpack.findAll({
         where: {
             id: req.session.sixpack.id
@@ -34,12 +39,16 @@ router.get("/user/sixpack/", function (req, res) {
         // const dbBeerJson = sixpack[5].map(beer => beer.toJSON());
         var hbsObject = { 
             sixpack: dbSixpackJson,
-            // beer: dbBeerJson
+            user : req.session.user,
+            employee: req.session.employee
         };
         console.log(hbsObject)
         // return res.json(hbsObject);
         return res.render("sixpack", hbsObject);
     })
+} else {
+    res.redirect("/user/sixpacks/")
+}
 })
 
 // Get all sixpacks associated with a logged in user
@@ -49,12 +58,15 @@ router.get("/user/sixpacks/", function (req, res) {
             UserId: req.session.user.id
         }
     }).then(sixpack => {
-        res.json(sixpack)
         const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
-        var hbsObject = { sixpack: dbSixpackJson };
+        var hbsObject = { 
+            sixpack: dbSixpackJson,
+            user : req.session.user,
+            employee: req.session.employee
+         };
         console.log(hbsObject)
-        // return res.json(hbsObject);
-        // return res.render("sixpack", hbsObject);
+        //return res.json(hbsObject);
+        return res.render("sixpacks", hbsObject);
     })
 })
 
@@ -78,7 +90,7 @@ router.post('/sixpacks', function (req, res) {
             id: newSixpack.id,
             name: newSixpack.name
         }
-        res.redirect("/sixpack");
+        res.redirect("/user/sixpack");
     }).catch(err => {
         console.log(err)
         res.status(500).json(err);

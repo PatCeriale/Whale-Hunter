@@ -11,7 +11,11 @@ router.get('/styles', function (req, res) {
     db.Style.findAll().then(style => {
         
         const dbStyleJson = style.map(style => style.toJSON());
-        var hbsObject = { style: dbStyleJson };
+        var hbsObject = { 
+            style: dbStyleJson,
+            user : req.session.user,
+            employee: req.session.employee
+         };
         console.log(hbsObject)
         //return res.json(hbsObject);
         return res.render("beerstyles", hbsObject);
