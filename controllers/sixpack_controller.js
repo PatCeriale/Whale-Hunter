@@ -56,6 +56,10 @@ router.get("/user/sixpacks/", function (req, res) {
     db.Sixpack.findAll({
         where: {
             UserId: req.session.user.id
+        },
+        include: {
+            model: db.Beer,
+            include: [db.Rating,db.Brewery,db.Style]
         }
     }).then(sixpack => {
         const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
@@ -145,8 +149,8 @@ router.delete("/sixpacks/:id", function (req, res) {
         if (deleteSixpack === 0) {
             res.status(404).json(deleteSixpack)
         } else {
-            //TODO:We need to add the page to redirect to here
-            res.redirect("/");
+            
+            res.status(200).json(deleteSixpack)
         }
     }).catch(err => {
         console.log(err);
