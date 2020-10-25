@@ -9,12 +9,12 @@ var db = require("../models/");
 //Get all styles from the DB
 router.get('/styles', function (req, res) {
     db.Style.findAll().then(style => {
-        res.json(style)
+        
         const dbStyleJson = style.map(style => style.toJSON());
         var hbsObject = { style: dbStyleJson };
         console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
+        //return res.json(hbsObject);
+        return res.render("beerstyles", hbsObject);
     })
 })
 
