@@ -76,16 +76,12 @@ body {
 }
 
 .whale-logo {
-  background: url(https://i.pinimg.com/originals/6f/20/39/6f2039da60d44bd4af2976367e4e35be.jpg);
+  background: url(http://res.cloudinary.com/crowandrew/image/upload/v1603654823/TestProject/ocziao1txu2xrumrkigx.png);
   background-size: cover;
-  width: 125px;
+  width: 140px;
   min-height: 125px;
   position: relative;
   overflow: hidden;
-  border-radius: 50%;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(37, 44, 51);
   margin-left: 50%;
   margin-right: 50%;
 }
@@ -95,8 +91,4 @@ body {
   margin: 0 auto;
   min-height: 100%;
   width: auto;
-}
-
-.brewery-description {
-  float: left;
 }
