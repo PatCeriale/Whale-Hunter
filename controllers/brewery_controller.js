@@ -77,11 +77,7 @@ router.post('/breweries/', function (req, res) {
         description: req.body.description,
         image: req.body.image
     }).then(newBrewery => {
-        res.json(newBrewery)
-        const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
-        var hbsObject = { brewery: dbBreweryJson };
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
+        res.redirect("/admin");
     }).catch(err => {
         console.log(err)
         res.status(500).json(err);
