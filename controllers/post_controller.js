@@ -8,7 +8,7 @@ router.get("/userpost", function (req, res) {
 });
 
 router.post("/userpost", function (req, res) {
-    console.log(req.body);
+
     db.Post.create({
         user_name: req.body.user_name,
         title: req.body.title,

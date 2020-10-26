@@ -16,7 +16,6 @@ router.get('/sixpacks', function (req, res) {
             user : req.session.user,
             employee: req.session.employee
              };
-        console.log(hbsObject)
         return res.json(hbsObject);
         // return res.render("index", hbsObject);
     })
@@ -42,7 +41,6 @@ router.get("/user/sixpack/", function (req, res) {
             user : req.session.user,
             employee: req.session.employee
         };
-        console.log(hbsObject)
         // return res.json(hbsObject);
         return res.render("sixpack", hbsObject);
     })
@@ -68,7 +66,6 @@ router.get("/user/sixpacks/", function (req, res) {
             user : req.session.user,
             employee: req.session.employee,
          };
-        console.log(hbsObject)
         //return res.json(hbsObject);
         return res.render("sixpacks", hbsObject);
     })
@@ -85,12 +82,10 @@ router.get('/user/sixpacks/:id', function (req, res) {
 
 //create new sixpack
 router.post('/sixpacks', function (req, res) {
-    console.log(req.body)
     db.Sixpack.create({        
         UserId: req.session.user.id,
         name: req.body.name,
     }).then(newSixpack => {
-        console.log(newSixpack)
         req.session.sixpack = {
             id: newSixpack.id,
             name: newSixpack.name
