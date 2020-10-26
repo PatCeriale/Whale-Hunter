@@ -17,6 +17,19 @@ router.get('/employees', function (req, res) {
         // return res.render("index", hbsObject);
     })
   })
+
+  //Get one employees from the DB
+router.get('/employees/:id', function (req, res) {
+    db.Employee.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(employee => {
+        res.json(employee)
+        return res.json(hbsObject);
+        // return res.render("index", hbsObject);
+    })
+  })
   
   //create new employee
   router.post('/employees', function (req, res) {
