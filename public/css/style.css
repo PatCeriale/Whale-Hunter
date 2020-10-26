@@ -92,3 +92,7 @@ body {
   min-height: 100%;
   width: auto;
 }
+.beer-description {
+  overflow-y: scroll;
+  height: 20vh;
+}
