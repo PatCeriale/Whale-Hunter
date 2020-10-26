@@ -62,8 +62,6 @@ $(document).ready(function () {
         const id = $("#style-id").val();
         const name = $('#style_name_modal').val();
         const description = $('#style-description_modal').text();
-        console.log("CLICK")
-        console.log($('#style_name_modal').val())
 
         $.ajax({
             method: "PUT",

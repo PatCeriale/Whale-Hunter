@@ -9,11 +9,10 @@ var db = require("../models/");
 //Get all ahabs from the DB for a specific beer
 router.get('/ratings/:id', function (req, res) {
   db.Rating.count().then(rating => {
-    console.log("There are " + rating + " likes for this beer")  
+
     res.json(rating)
       const dbRatingJson = rating.map(rating => rating.toJSON());
       var hbsObject = { rating: dbRatingJson };
-      console.log(hbsObject)
       return res.json(hbsObject);
       // return res.render("index", hbsObject);
   })
@@ -32,7 +31,6 @@ router.post('/ratings/:id', function (req, res) {
                 BeerId: req.params.id,
                 UserId: req.session.user.id
             }).then(updateRating => {
-                console.log(updateRating);
                 if (!updateRating) {
                     res.status(404).json(updateRating)
                 } else {
@@ -43,7 +41,6 @@ router.post('/ratings/:id', function (req, res) {
                 res.status(500).json(err);
             })
         } else {
-            console.log("You already liked this beer");
             res.json(ratings);
         }
     })
