@@ -81,7 +81,6 @@ body {
 }
 
 .whale-logo {
-  .whale-logo {
     background: url(http://res.cloudinary.com/crowandrew/image/upload/v1603654823/TestProject/ocziao1txu2xrumrkigx.png);
     background-size: cover;
     display: flex;
@@ -93,7 +92,6 @@ body {
     overflow: hidden;
     margin-left: 40%;
     margin-right: 60%;
-  }
 }
 
 .whale-box {
