@@ -1,5 +1,10 @@
 module.exports = function (sequelize, DataTypes) {
     var Beer = sequelize.define("Beer", {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -9,15 +14,24 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         abv: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DECIMAL,
             allowNull: false
         },
         ibu: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
         },
         image: {
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        createdAt: {
+            type: 'TIMESTAMP',
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+        },
+        updatedAt: {
+            type: 'TIMESTAMP',
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: false
         }
     })
