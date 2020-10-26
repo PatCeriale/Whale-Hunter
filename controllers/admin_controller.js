@@ -17,6 +17,7 @@ router.get("/admin", function (req, res) {
                     db.Beer.findAll().then(beers => {
                         const dbBeerJson = beers.map(beer => beer.toJSON());
                         var hbsObject = { 
+                            user: req.user.json,
                             employee: dbEmployeeJson,
                             style: dbStylesJson,
                             brewery: dbBreweryJson,
