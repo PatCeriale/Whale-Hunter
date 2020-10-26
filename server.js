@@ -12,6 +12,7 @@ var db = require("./models");
 // Sets up the Express App
 // =============================================================
 var app = express();
+require("dotenv").config();
 
 // Static directory
 app.use(express.static(__dirname + "/public"));
@@ -34,7 +35,7 @@ const session = require("express-session");
 
 app.use(
   session({
-    secret: "ipaIsBest",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
