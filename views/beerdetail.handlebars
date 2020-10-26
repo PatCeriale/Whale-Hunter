@@ -28,9 +28,11 @@
           <p>{{beer.description}}</p>
           </div> 
       </div>
+      {{#if user}}
       <footer class="card-footer">
         <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth" value={{beer.id}}>Add To Six Pack</Button>
       </footer>
+      {{/if}}
     </div>
   </div>
 </section>
