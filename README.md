@@ -5,22 +5,7 @@
 ## Description
 
 > This application is built to be your go-to for beer discovery and acquisition from the comfort of your own home. Browse our online store and explore new beers to taste and learn more about the beers and breweries that made them.
-
-Deployed url: https://whalehunterbeer.herokuapp.com/
-
-## Contributors
-
-```
-Front End
-    - Patrick Ceriale - Git Master
-    - Andrew Crow - Project Manager
-```
-
-```
-Back End
-    - Alex Milroy
-    - Larry Cessna
-```
+> **Deployed url:** https://whalehunterbeer.herokuapp.com/
 
 ## **Table of Contents**
 
@@ -58,21 +43,30 @@ sequelize db:create
 
 > None
 
-## **Contributing**
+## Contributors
 
-> Any contributions are welcome
+### **Front End**
 
-## **Tests**
+Patrick Ceriale - Git Master https://github.com/PatCeriale / Patceriale@gmail.com
 
-> N/A
+Andrew Crow - Project Manager
+
+#### Back End
+
+    - Alex Milroy
+    - Larry Cessna
+
+Any outside contributions are welcome!
 
 ## **Questions**
 
-Find me on GitHub at https://github.com/PatCeriale.
+Contact us via GitHub/email at https://github.com/PatCeriale / Patceriale@gmail.com
 Contact me via email at Patceriale@gmail.com.
 
 ## Wireframes
 
 https://www.figma.com/file/4MM8DboPvN99CeTFR8rs1k/Whale-Hunter?node-id=0%3A72
 
----
+## TODO: Update ERD
+
+> Special thanks to Thanks to Craig Patterson from Absorb81 for the use of his artwork for our logo. Find him at www.Absorb81.com, or contact him via Craig@Absorb81.com.
