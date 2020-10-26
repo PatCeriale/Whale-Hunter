@@ -1,27 +1,29 @@
 <section class="section">
+    <h1 class="title">Beer Styles</h1>
     <div class="columns is-centered is-multiline is-flex-wrap-wrap" style="padding: 2rem">
         {{#each style}}
-        <div class="column is-one-third">
+        <div class="column is-one-third style-content">
             <div class="card">
                 <div class="card-image">
-                    <figure class="image">
+                    <figure class="image style-image">
                         <img src="
-                            {{this.image}}" alt="Placeholder image">
+                            {{this.image}}
+                            " alt="Placeholder image">
                     </figure>
                 </div>
-                <div class="card-content">
+                <div class="card-content ">
                     <div class="media">
                         <div class="media-content">
                             <p class="title is-4"><a href="/beers/{{this.id}}">{{this.name}}</a></p>
 
                         </div>
                     </div>
-                    <div class="content">
-                        <p>Description: {{this.description}}</p>
+                    <div class="content beer-description">
+                        <p>{{this.description}}</p>
                     </div>
                     <footer class="card-footer">
                         <button class="view-style-beers card-footer-item button is-black is-medium is-fullwidth"
-                            value={{this.id}}>View Beers in this Style</Button>
+                            value={{this.id}}>View {{this.name}}s</Button>
                     </footer>
                 </div>
             </div>
