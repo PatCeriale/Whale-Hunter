@@ -1,0 +1,51 @@
+<section class="section">
+    <div class="columns">
+        <div class="column is-3 is-hidden-touch">
+
+            <figure class="image">
+                <img src="https://www.apperitivo.shop/wp-content/uploads/2018/02/4136cb7101a6f0fe307e4c11dd0a2a31.jpg">
+
+            </figure>
+            <p>&nbsp; &nbsp;<strong>Ad</strong></p>
+        </div>
+        <div class="column is-8 ml-2">
+            <div class="block">
+                <h1 class="title">Discover Breweries You'll Love</h1>
+            </div>
+            {{#each brewery}}
+            <article class="media">
+                <figure class="media-left">
+                    <p class="image is-128x128">
+                        <img src="{{this.image}}">
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                        <h2 class="title is-4"><a href="/breweries/{{this.id}}">{{this.brewery_name}}</a></h2>
+                        <p class="subtitle is-6"><small>{{this.city}},</small><small>{{this.state}}</small></p>
+                        <p class="brewery-description">{{this.description}}</p>
+                        <a class="is-hidden-desktop" href="tel:{{this.phone}}"><i
+                                class="fas fa-lg fa-phone-square"></i></a>&nbsp; &nbsp;
+                        <a class="is-hidden-desktop" href="mailto:{{this.email}}"><i
+                                class="fas fa-lg fa-envelope"></i></a>&nbsp; &nbsp;
+                        <a class="is-hidden-desktop" href="{{this.website}}"><i
+                                class="fas fa-lg fa-external-link-square-alt"></i></i></a>&nbsp; &nbsp;
+                        <a class="is-hidden-desktop"
+                            href="http://maps.google.com/?daddr={{this.address_1}}+{{this.address_2}}+{{this.city}}+{{this.state}}+{{this.zip_code}}"><i
+                                class="fas fa-lg fa-map-marker-alt"></i></a>
+                    </div>
+                </div>
+                <div class="media-right is-hidden-touch">
+                    <p>
+                        <a class="button" href="tel:{{this.phone}}">Call</a>
+                        <a class="button" href="mailto:{{this.email}}">Message</a>
+                        <a class="button" href="{{this.website}}">Website</a>
+                        <a class="button"
+                            href="http://maps.google.com/?daddr={{this.address_1}}+{{this.address_2}}+{{this.city}}+{{this.state}}+{{this.zip_code}}">Location</a>
+                    </p>
+                </div>
+            </article>
+            {{/each}}
+        </div>
+    </div>
+</section>

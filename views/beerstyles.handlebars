@@ -1,0 +1,33 @@
+<section class="section">
+    <div class="columns is-centered is-multiline is-flex-wrap-wrap" style="padding: 2rem">
+        {{#each style}}
+        <div class="column is-one-third">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image">
+                        <img src="
+                            {{this.image}}" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4"><a href="/beers/{{this.id}}">{{this.name}}</a></p>
+
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>Description: {{this.description}}</p>
+                    </div>
+                    <footer class="card-footer">
+                        <button class="view-style-beers card-footer-item button is-black is-medium is-fullwidth"
+                            value={{this.id}}>View Beers in this Style</Button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/beerstylebutton.js"></script>

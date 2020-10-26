@@ -1,0 +1,63 @@
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item whale-box" href="#">
+            <figure>
+                <div class="whale-logo"></div>
+            </figure>
+        </a>
+        <a class="navbar-burger burger" data-target="navMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+        <div class="navbar-start"></div>
+        <div class="navbar-end">
+            <!-- navbar items -->
+            <a class="navbar-item" href="/">
+                Home
+            </a>
+            <a class="navbar-item" href="/beers">
+                Beers
+            </a>
+            <a class="navbar-item" href="/styles">
+                Beer Styles
+            </a>
+            <a class="navbar-item" href="/breweries">
+                Breweries
+            </a>
+             {{#if user}}
+            <a class="navbar-item" href="/user/sixpacks/">
+                My Six Packs
+            </a>
+            <a class="navbar-item" href="/user/sixpack/">
+                Current Six Pack
+            </a>
+            <a class="navbar-item" href="/userpost">
+                Create Post
+            </a>
+            <a class="navbar-item" href="/profile">
+                Profile
+            </a>
+            <a class="navbar-item" href="/logout">
+                Logout
+            </a>
+            {{/if}}
+            {{#if employee}}
+            <a class="navbar-item" href="/Admin">
+                Admin
+            </a>
+            {{/if}}
+            {{#unless user}}
+            <a class="navbar-item" href="/signup">
+                Sign Up
+            </a>
+            <a class="navbar-item" href="/login">
+                Log In
+            </a>
+            {{/unless}}
+        </div>
+    </div>
+</nav>
+<script src="/js/navbar.js"></script>

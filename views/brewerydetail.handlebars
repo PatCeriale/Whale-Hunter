@@ -1,0 +1,91 @@
+<section class="hero mt-6">
+  <div class="container is-max-desktop">
+    <figure class="image">
+      <img src="{{brewery.image}}">
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title">{{brewery.brewery_name}}</h2>
+        <h3 class="subtitle">{{brewery.city}}, {{brewery.state}}</h3>
+      </div>
+      <div class="column">
+        <p>{{brewery.description}}</p>
+      </div>
+      <div class="column">
+        <a class="button is-hidden-touch" href="tel:{{brewery.phone}}">Call</a>
+        <a class="button is-hidden-touch" href="mailto:{{brewery.email}}">Message</a>
+        <a class="button is-hidden-touch" href="{{brewery.website}}">Website</a>
+        <a class="button is-hidden-touch"
+          href="http://maps.google.com/?daddr={{brewery.address_1}}+{{brewery.address_2}}+{{brewery.city}}+{{brewery.state}}+{{brewery.zip_code}}">Location</a>
+        <a class="is-hidden-desktop" href="tel:{{brewery.phone}}"><i class="fas fa-3x fa-phone-square"></i></a>&nbsp;
+        &nbsp;
+        <a class="is-hidden-desktop" href="mailto:{{brewery.email}}"><i class="fas fa-3x fa-envelope"></i></a>&nbsp;
+        &nbsp;
+        <a class="is-hidden-desktop" href="{{brewery.website}}"><i
+            class="fas fa-3x fa-external-link-square-alt"></i></i></a>&nbsp; &nbsp;
+        <a class="is-hidden-desktop"
+          href="http://maps.google.com/?q={{brewery.address_1}}+{{brewery.address_2}}+{{brewery.city}}+{{brewery.state}}+{{brewery.zip_code}}"><i
+            class="fas fa-3x fa-map-marker-alt"></i></a>
+      </div>
+    </div>
+
+    <div class="columns is-centered is-multiline is-flex-wrap-wrap" style="padding: 2rem">
+      {{#each breweryBeer}}
+      <div class="column is-one-third">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-square">
+              <img src="{{this.image}}" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4"><a href="/beers/{{this.id}}">{{this.name}}</a></p>
+                <p class="subtitle is-6"><a href="/styles/{{this.Style.id}}">{{this.Style.name}}</a></p>
+              </div>
+            </div>
+            <div class="content">
+              <div class="level is-mobile">
+                <div class="level-left">
+                  <div class="level-item px-0 mx-0">
+                    <figure class="image is-24x24 px-0 mx-1">
+                      <img class="ahab is-clickable" src="/images/ahab.png" data-index={{this.id}}>
+                    </figure>
+                  </div>
+                  <div class="level-item">
+                    <p>{{this.Ratings.length}}</p>
+                  </div>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <p>ABV: {{this.abv}}%</p>
+                  </div>
+                  <div class="level-item">
+                    <p>IBU: {{this.ibu}}</p>
+                  </div>
+                </div>
+
+
+              </div </div>
+              <footer class="card-footer">
+                <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth"
+                  value={{this.id}}>Add
+                  To Six Pack</Button>
+              </footer>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/addbeersixpack.js"></script>
+<script src="/js/ahabclick.js"></script>

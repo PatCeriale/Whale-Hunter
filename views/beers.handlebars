@@ -1,0 +1,57 @@
+<section class="section">
+    <div class="columns is-centered is-multiline is-flex-wrap-wrap" style="padding: 2rem">
+        {{#each beer}}
+        <div class="column is-one-third">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-square">
+                        <img src="{{this.image}}" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4"><a href="/beers/{{this.id}}">{{this.name}}</a></p>
+                            <p class="subtitle is-6"><a href="/styles/{{this.Style.id}}">{{this.Style.name}}</a></p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                <div class="level-item px-0 mx-0">
+                                    <figure class="image is-24x24 px-0 mx-1">
+                                        <img class="ahab is-clickable"
+                                            src="/images/ahab.png"
+                                            data-index={{this.id}}>
+                                    </figure>
+                                </div>
+                                <div class="level-item">
+                                    <p>{{this.Ratings.length}}</p>
+                                </div>
+                            </div>
+                            <div class="level-right">
+                                <div class="level-item">
+                                    <p>ABV: {{this.abv}}%</p>
+                                </div>
+                                <div class="level-item">
+                                    <p>IBU: {{this.ibu}}</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth"
+                            value={{this.id}}>Add
+                            To Six Pack</Button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/addbeersixpack.js"></script>
+<script src="/js/ahabclick.js"></script>

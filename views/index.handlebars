@@ -1,0 +1,165 @@
+<section class="section mb-0 pb-0">
+    <div class="container is-clipped mb-0 pb-0">
+        <h1 class="title">Popular</h1>
+
+        <div id="slider">
+            <div class="card">
+
+                <div class="card-content carousel-card-content">
+                    <div class="item__title carousel-title" style="text-align: center;">
+                        <a href="#">Georgetown Brewing Company</a>
+                    </div>
+                    <div class=" item__description">
+                        <br> Georgetown Brewing Company is the largest independent brewery in Washington State maker of
+                        many darn tasty beers, including Manny's Pale Ale. <br><br>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://olsonkundig.com/wp-content/uploads/2015/05/08_08067_00_Georgetown_Brewing_Company_BB-1440x1079.jpg"
+                            alt="Georgetown Brewery" />
+                    </figure>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <div class="card-content carousel-card-content">
+                    <div class="item__title" style="text-align: center;">
+                        <a href="#">Old Stove Brewing</a>
+                    </div>
+                    <div class="item__description">
+                        <br> Old Stove Brewing Co in Seattle, WA is a taproom and brewery offering 16 craft beers and a
+                        full
+                        fare menu in the heart of Pike Place Market<br><br>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://www.oldstove.com/menubar/121-off--1-1-1543429178.jpg"
+                            alt="Old Stove Brewing" />
+                    </figure>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <div class="card-content carousel-card-content">
+                    <div class="item__title" style="text-align: center;">
+                        <a href="#">Elysian Brewing Company</a>
+                    </div>
+                    <div class="item__description">
+                        <br> Elysian Has Brewed Over 350 Craft Beers Since it Opened on Capitol Hill in 1996. Crafted in
+                        Seattle, WA. Flexibility & Innovation.<br><br>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://brewpublic.com/wp-content/uploads/2019/05/Elysian-Brewing-Capitol-Hill..jpeg"
+                            alt="Elysian Brewing Company" />
+                    </figure>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <div class="card-content carousel-card-content">
+                    <div class="item__title" style="text-align: center;">
+                        <a href="#">Four Generals Brewing</a>
+                    </div>
+                    <div class="item__description">
+                        <br> The brainchild of Ross Hudspeth Emphasizes "well-balanced beers" like a red ale,
+                        CDA, and a pale ale, rather than "over-the-top IPAs."
+                        <br><br>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://425business.com/wp-content/uploads/2017/10/Four-Generals-Brewing-3_web.jpg"
+                            alt="Four Generals Brewing" />
+                    </figure>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <div class="card-content carousel-card-content">
+                    <div class="item__title" style="text-align: center;">
+                        <a href="#">Dubtown Brewing Company</a>
+                    </div>
+                    <div class="item__description">
+                        <br> Made with love in Downtown Renton.
+                        Lions, ciders, and beers - oh my! Love IPAs? they got ‘em. Hate IPAs? That’s cool, they make
+                        other stuff too.<br><br>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <figure class="image is-16by9 is-covered">
+                        <img src="https://lh3.googleusercontent.com/__YYXdloCOWlKo9A2qHChRL6vcpqPxiv2S_OYleQkJ4ZJovL3s2i0JdiuNibfVOB_k_nMspTNhoaqkzc=w1080-h608-p-no-v0"
+                            alt="Dubtown Brewing Company" />
+                    </figure>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <div class="card-content carousel-card-content" style="bottom: 0%;">
+                    <div class="item__title" style="text-align: center;">
+                        <a href="#">Mac & Jack's Brewery</a>
+                    </div>
+                    <div class="item__description">
+                        <br> Brewery with a passion for good beer and the
+                        certainty that people would recognize quality and originality when they tasted it<br><br>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <figure class="image video-container is-16by9">
+                        <img src="https://www.wheretraveler.com/sites/default/files/styles/wt17_promoted_large/public/images/Beers-Neutral-Kegs-1_Courtesy_Mac%26JacksBrewery.jpg?itok=7Z8PFiiV&timestamp=1450123764"
+                            alt="Mac & Jack's Brewery">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ///////////////////////// Trending 6 pack container/////////////////////////////// -->
+<section class="section mt-0 pt-0">
+    <div class="container mt-0 pt-0">
+        <div class="columns is-centered is-multiline is-flex-wrap-wrap" style="padding: 2rem">
+            {{#each post}}
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by5">
+                            <img src="{{this.image}}" alt="{{this.title}}">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p><span class="title is-5">{{this.title}}</span> <span
+                                        class="subtitle is-7">@{{this.user_name}}</span></p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p>{{this.description}}
+                                <a href="#">#{{this.beer_name}}</a> <a href="#">#{{this.brewery_name}}</a>
+                                <br>
+                                <time datetime="{{this.createdAt}}">{{this.createdAt}}</time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+<script>bulmaCarousel.attach('#slider', {
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        infinite: true,
+    });</script>

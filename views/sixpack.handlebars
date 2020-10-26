@@ -1,0 +1,63 @@
+<body>
+    <div class="hero">
+        <div class="container">{{#each sixpack}}
+            <h1 class="title">My {{this.name}} Six Pack</h1>
+        </div>
+    </div>
+
+    <section>
+        <!-- Six Pack Beers -->
+        <div class="container is-max-desktop beer-detail-container">
+
+            {{#each Beers}}
+            <div class="card is-shady m-2">
+                <div class="card-content">
+                    <div class="media mb-0 pb-0">
+                        <div class="media-left">
+                            <figure class="image is-128x128">
+                                <img src="{{this.image}}" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-right">
+                            <div class="media-content">
+                                <h4 class="title beer-title m-0">{{this.name}}</h4>
+                                <div class="level is-mobile">
+                                    <div class="level-left">
+                                        <div class="level-item px-0 mx-0">
+                                            <figure class="image is-24x24 px-0 mx-1">
+                                                <img class="ahab is-clickable" src="/images/ahab.png"
+                                                    data-index={{this.id}}>
+                                            </figure>
+                                        </div>
+                                        <div class="level-item">
+                                            <p>{{this.Ratings.length}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="level-right">
+                                        <div class="level-item">
+                                            <p>ABV: {{this.abv}}%</p>
+                                        </div>
+                                        <div class="level-item">
+                                            <p>IBU: {{this.ibu}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content mt-0 pt-0">
+                        {{this.description}}
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <span class="delete-beer card-footer-item button is-black is-medium is-fullwidth"
+                        data-beer={{this.id}} data-sixpack={{../this.id}}>Remove From Six Pack</span>
+                </footer>
+            </div>
+            {{/each}}
+            {{/each}}
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/js/ahabclick.js"></script>
+    <script src="/js/removebeersixpack.js"></script>
