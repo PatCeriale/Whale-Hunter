@@ -38,23 +38,23 @@ router.get("/admin", function (req, res) {
 
 router.get('/signup', (req, res) => {
     const hbsObject = { 
-        user: req.user.json,
-        employee: dbEmployeeJson
+        user : req.session.user,
+        employee: req.session.employee
     }
     return res.render("signup",hbsObject);
 })
 router.get('/employeelogin', (req, res) => {
     const hbsObject = { 
-        user: req.user.json,
-        employee: dbEmployeeJson
+        user : req.session.user,
+        employee: req.session.employee
     }
     return res.render("employeelogin",hbsObject);
 })
 
 router.get('/login', (req, res) => {
     const hbsObject = { 
-        user: req.user.json,
-        employee: dbEmployeeJson
+        user : req.session.user,
+        employee: req.session.employee 
     }
     return res.render("userlogin",hbsObject);
 })
