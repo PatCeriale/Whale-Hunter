@@ -29,7 +29,7 @@ router.get("/styles/:id", function (req, res) {
             id: req.params.id
         }
     }).then(style => {
-        res.json(style)
+         return res.json(style)
     })
 })
 
@@ -59,6 +59,7 @@ router.put('/styles/:id', function (req, res) {
             id: req.params.id
         }
     }).then(updateStyle => {
+        console.log(updateStyle)
         if (updateStyle[0] === 0) {
             res.status(404).json(updateStyle)
         } else {
