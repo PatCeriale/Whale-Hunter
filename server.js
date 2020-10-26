@@ -5,7 +5,7 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
-
+var moment = require("moment");
 // Requiring our models for syncing
 var db = require("./models");
 
@@ -30,6 +30,12 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
+
+// Creating custom helper
+const hbs = exphbs.create({});
+hbs.handlebars.registerHelper('newDate', function(dateTime) {
+  return moment(dateTime).format('D MMM YYYY @ H:mm');
+});
 
 const session = require("express-session");
 
@@ -65,6 +71,7 @@ app.use(profile);
 app.use(rating_routes);
 app.use(sixpack_routes);
 app.use(style_routes);
+
 
 var PORT = process.env.PORT || 8080;
 

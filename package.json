@@ -1,7 +1,7 @@
 {
-  "name": "UW-Project2",
+  "name": "Whale Hunter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Whale Hunter is a beer tracking app that is built to be your go to for beer discovery",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/PatCeriale/UW-Project2.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrew Crow, Larry Cessna, Patrick Ceriale, Alex Milroy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PatCeriale/UW-Project2/issues"
@@ -27,6 +27,7 @@
     "express-handlebars": "^5.1.0",
     "express-session": "^1.17.1",
     "handlebars": "^4.7.6",
+    "moment": "^2.29.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   }

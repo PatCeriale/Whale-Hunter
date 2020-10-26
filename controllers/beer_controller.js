@@ -92,7 +92,10 @@ router.post("/beers", function (req, res) {
         image: req.body.image
     }).then(function (dbBeer) {
         console.log(dbBeer);
-        res.json(dbBeer)
+        res.redirect("/admin");
+    }).catch(err => {
+        console.log(err)
+        res.status(500).json(err);
     });
 });
 //Update existing beer
