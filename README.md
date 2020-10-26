@@ -68,7 +68,7 @@ Contact us via GitHub/email at https://github.com/PatCeriale / Patceriale@gmail.
 
 Home page:
 
-![Screen Shot 2020-10-26 at 1 22 22 PM](https://user-images.githubusercontent.com/68709356/97225439-dff3ef80-178f-11eb-967f-1fb0fa8e7f24.png)
+![Screen Shot 2020-10-26 at 4 35 58 PM](https://user-images.githubusercontent.com/68709356/97239644-5e10c000-17a9-11eb-8f9e-d6f1d89cb0fa.png)
 
 Beers:
 
@@ -90,6 +90,10 @@ Post:
 
 https://www.figma.com/file/4MM8DboPvN99CeTFR8rs1k/Whale-Hunter?node-id=0%3A72
 
-## TODO: Update ERD
+## ERD
 
-> Special thanks to Thanks to Craig Patterson from Absorb81 for the use of his artwork for our logo. Find him at www.Absorb81.com, or contact him via Craig@Absorb81.com.
+https://drive.google.com/file/d/1i3BOO3OyxMXEzjMgG5gWlhQIso3t3qk7/view?usp=sharing
+
+## Special Thanks
+
+> The Whale Hunter team would personally like to thank Craig Patterson for the use of his artwork for our logo. Find him at www.Absorb81.com, or contact him via email at Craig@Absorb81.com.
