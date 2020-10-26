@@ -1,11 +1,16 @@
 module.exports = function (sequelize, DataTypes) {
     var Brewery = sequelize.define("Brewery", {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         brewery_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
-              }
+            }
         },
         address_1: {
             type: DataTypes.STRING,
@@ -27,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         phone: {
-            type: DataTypes.INTEGER
+            type: DataTypes.BIGINT
         },
         email: {
             type: DataTypes.STRING
@@ -37,11 +42,21 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         image: {
             type: DataTypes.STRING
         },
+        createdAt: {
+            type: 'TIMESTAMP',
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+        },
+        updatedAt: {
+            type: 'TIMESTAMP',
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+        }
     })
 
     Brewery.associate = function (models) {
