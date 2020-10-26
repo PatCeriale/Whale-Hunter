@@ -68,6 +68,11 @@ body {
   padding: 12px 24px 24px;
   margin-top: 20px;
   min-height: 10vh;
+  display: block;
+}
+
+.footer-container {
+  margin-top: 5vh;
 }
 .navbar {
   background: url(../images/beerfoamglass.jpeg);
