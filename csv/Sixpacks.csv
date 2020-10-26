@@ -1,6 +1,6 @@
-id,name,createdAt,updatedAt,UserId
-1,Oktoberfest,,,2
-2,Dark and stormy,,,4
-3,all aboard the hop train,,,6
-4,summer daze,,,8
-5,mayhem,,,10
+id,name,UserId
+1,Oktoberfest,2
+2,Dark and stormy,4
+3,all aboard the hop train,6
+4,summer daze,8
+5,mayhem,10
