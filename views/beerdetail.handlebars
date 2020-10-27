@@ -7,30 +7,32 @@
         </figure>
       </div>
       <div class="card-content has-background-light beer-content">
-        <div class="content"> 
+        <div class="content">
           <div class="level is-mobile">
-                <div class="level-left">
-                  <div class="level-item px-0 mx-0">
-                    <figure class="image is-24x24 px-0 mx-1">
-                      <img class="ahab is-clickable" src="/images/ahab.png" data-index={{this.id}}>
-                    </figure>
-                  </div>
-                  <div class="level-item">
-                    <p>{{numLikes}}</p>
-                  </div>
-                </div>
+            <div class="level-left">
+              <div class="level-item px-0 mx-0">
+                <figure class="image is-24x24 px-0 mx-1">
+                  <img class="ahab is-clickable" src="/images/ahab.png" data-index={{this.id}}>
+                </figure>
+              </div>
+              <div class="level-item">
+                <p>{{numLikes}}</p>
+              </div>
+            </div>
           </div>
           <h4 class="title beer-title m-0">{{beer.name}}</h4>
           <h5 class="subtitle m-0 is-6"><a href="/breweries/{{beer.Brewery.id}}">{{beer.Brewery.brewery_name}}</a></h5>
-          <p class="is-size-7 m-0">Style: <span class="beer-abv"><a href="/styles/{{beer.StyleId}}">{{beer.Style.name}}</a></span></p>
+          <p class="is-size-7 m-0">Style: <span class="beer-abv"><a
+                href="/beers/styles/{{beer.StyleId}}">{{beer.Style.name}}</a></span></p>
           <p class="m-0 is-size-7">IBU: <span class="beer-ibu">{{beer.ibu}}</span></p>
           <p class="is-size-7 m-0">ABV: <span class="beer-abv">{{beer.abv}}</span>%</p>
           <p>{{beer.description}}</p>
-          </div> 
+        </div>
       </div>
       {{#if user}}
       <footer class="card-footer">
-        <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth" value={{beer.id}}>Add To Six Pack</Button>
+        <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth" value={{beer.id}}>Add To
+          Six Pack</Button>
       </footer>
       {{/if}}
     </div>
