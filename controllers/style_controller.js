@@ -9,13 +9,13 @@ var db = require("../models/");
 //Get all styles from the DB
 router.get('/styles', function (req, res) {
     db.Style.findAll().then(style => {
-        
+
         const dbStyleJson = style.map(style => style.toJSON());
-        var hbsObject = { 
+        var hbsObject = {
             style: dbStyleJson,
-            user : req.session.user,
+            user: req.session.user,
             employee: req.session.employee
-         };
+        };
         console.log(hbsObject)
         //return res.json(hbsObject);
         return res.render("beerstyles", hbsObject);
@@ -29,7 +29,32 @@ router.get("/styles/:id", function (req, res) {
             id: req.params.id
         }
     }).then(style => {
-         return res.json(style)
+        return res.json(style)
+    })
+})
+
+router.get("/findstyle/:id", function (req, res) {
+    db.Style.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(style => {
+        const dbStyleJson = style.toJSON();
+        db.Beer.findAll({
+            where: {
+                StyleId: req.params.id
+            }
+        }).then(beers => {
+            const dbBeersJson = beers.map(beer => beer.toJSON());
+            console.log("The style name is: ", style.name);
+            var hbsObject = {
+                name: style.name,
+                style: dbStyleJson,
+                beer: dbBeersJson
+            };
+            console.log("Here's hbsObject.style: ", hbsObject.style);
+            return res.render("singlestyle", hbsObject);
+        })
     })
 })
 
@@ -81,7 +106,7 @@ router.delete("/styles/:id", function (req, res) {
         if (deleteStyle === 0) {
             res.status(404).json(deleteStyle)
         } else {
-            
+
             res.status(200).json(deleteStyle)
         }
     }).catch(err => {

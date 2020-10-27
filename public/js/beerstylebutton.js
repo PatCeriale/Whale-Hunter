@@ -6,7 +6,7 @@ $(document).ready(function () {
     const style_id = $(this).val();
 
     console.log(style_id);
-    location.assign("/beers/styles/" + style_id)
+    location.assign("/findstyle/" + style_id)
   });
 });
 
