@@ -8,10 +8,24 @@
             </div>
         </div>
     </div>
+
+{{!-- Anchor Links --}}
+<div class="columns">
+    <div class="column">
+        <div class="box has-background-info">
+            <h2 class="has-text-primary-light is-size-4">What would you like to do?</h2>
+            <a href="#Add-Employee"><button class="button is-black is-small">Add Employee</button></a>
+            <a href="#Add-Style"><button class="button is-black is-small">Add Style</button></a>
+            <a href="#Add-Brewery"><button class="button is-black is-small">Add Brewery</button></a>
+            <a href="#Add-Beer"><button class="button is-black is-small">Add Beer</button></a>
+        </div>
+    </div>
+</div>
+
     <div class="columns">
         <div class="column">
             <div class="box has-background-primary">
-                <h2 class="has-text-primary-light is-size-4">Add Employee</h2>
+                <h2 class="has-text-primary-light is-size-4"><a id="Add-Employee"></a>Add Employee</h2>
                 <form action="/employees" method="post">
                     <div class="field">
                         <label class="label is-small">User Name</label>
@@ -79,7 +93,7 @@
     <div class="columns">
         <div class="column">
             <div class="box has-background-warning">
-                <h2 class="has-text-primary-light is-size-4">Add Style</h2>
+                <h2 class="has-text-primary-light is-size-4"><a id="Add-Style"></a>Add Style</h2>
                 <form action="/styles/" method="post">
                     <div class="field">
                         <label class="label is-small">Name</label>
@@ -142,7 +156,7 @@
     <div class="columns">
         <div class="column">
             <div class="box has-background-info">
-                <h2 class="has-text-primary-light is-size-4">Add Brewery</h2>
+                <h2 class="has-text-primary-light is-size-4"><a id="Add-Brewery"></a>Add Brewery</h2>
                 <form action="/breweries" method="post">
                     <div class="field">
                         <label class="label is-small">Brewery Name</label>
@@ -253,7 +267,7 @@
     <div class="columns">
         <div class="column">
             <div class="box has-background-success">
-                <h2 class="has-text-primary-light is-size-4">Add Beer</h2>
+                <h2 class="has-text-primary-light is-size-4"><a id="Add-Beer"></a>Add Beer</h2>
                 <form action="/beers" method="post">
                     <div class="field">
                         <label class="label is-small">Beer Name</label>

@@ -15,8 +15,7 @@ router.get('/styles', function (req, res) {
             style: dbStyleJson,
             user: req.session.user,
             employee: req.session.employee
-        };
-        console.log(hbsObject)
+         };
         //return res.json(hbsObject);
         return res.render("beerstyles", hbsObject);
     })
@@ -65,7 +64,6 @@ router.post('/styles/', function (req, res) {
         description: req.body.description,
         image: req.body.image
     }).then(newStyle => {
-        console.log(newStyle)
         res.redirect("/admin");
     }).catch(err => {
         console.log(err)
@@ -84,7 +82,6 @@ router.put('/styles/:id', function (req, res) {
             id: req.params.id
         }
     }).then(updateStyle => {
-        console.log(updateStyle)
         if (updateStyle[0] === 0) {
             res.status(404).json(updateStyle)
         } else {

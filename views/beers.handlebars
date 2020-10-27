@@ -1,6 +1,6 @@
 <section class="section">
-    <div class="columns is-centered is-multiline is-flex-wrap-wrap" style="padding: 2rem">
-        {{style.description}}
+    <h1 class="title">Beers</h1>
+    <div class="columns is-centered is-multiline is-flex-wrap-wrap">
         {{#each beer}}
         <div class="column is-one-third">
             <div class="card">
@@ -42,11 +42,13 @@
 
                         </div>
                     </div>
+                    {{#if ../user}}
                     <footer class="card-footer">
                         <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth"
                             value={{this.id}}>Add
                             To Six Pack</Button>
                     </footer>
+                    {{/if}}
                 </div>
             </div>
         </div>
@@ -54,5 +56,6 @@
     </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="/js/addbeersixpack.js"></script>
 <script src="/js/ahabclick.js"></script>

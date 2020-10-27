@@ -4,7 +4,6 @@ $(document).ready(function() {
       event.preventDefault();
       
       const style_id = $(this).children(".delete_style").val();
-      console.log("CLICK:",style_id)
     
       $.ajax({
         method: "DELETE",

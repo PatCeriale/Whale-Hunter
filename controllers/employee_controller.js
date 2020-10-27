@@ -44,7 +44,6 @@ router.post('/employees', function (req, res) {
         last_name: req.body.last_name,
         active: req.body.active
     }).then(newEmployee => {
-        console.log(newEmployee)
         res.redirect("/admin");
     }).catch(err => {
         console.log(err)

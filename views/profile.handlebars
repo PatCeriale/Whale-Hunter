@@ -23,7 +23,7 @@
                                     <p>{{this.description}}
                                         <a href="#">#{{this.beer_name}}</a> <a href="#">#{{this.brewery_name}}</a>
                                         <br>
-                                        <time datetime="{{this.createdAt}}">{{this.createdAt}}</time>
+                                        <time datetime="{{this.createdAt}}">{{newDate this.createdAt}}</time>
                                     </p>
                                 </div>
                             </div>
@@ -90,4 +90,5 @@
     </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="/js/addbeersixpack.js"></script>

@@ -94,12 +94,10 @@ router.get('/user/sixpacks/:id', function (req, res) {
 
 //create new sixpack
 router.post('/sixpacks', function (req, res) {
-    console.log(req.body)
-    db.Sixpack.create({
+    db.Sixpack.create({        
         UserId: req.session.user.id,
         name: req.body.name,
     }).then(newSixpack => {
-        console.log(newSixpack)
         req.session.sixpack = {
             id: newSixpack.id,
             name: newSixpack.name

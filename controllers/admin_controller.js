@@ -36,14 +36,26 @@ router.get("/admin", function (req, res) {
 //================================================================================
 
 router.get('/signup', (req, res) => {
-    return res.render("signup");
+    const hbsObject = { 
+        user : req.session.user,
+        employee: req.session.employee
+    }
+    return res.render("signup",hbsObject);
 })
 router.get('/employeelogin', (req, res) => {
-    return res.render("employeelogin");
+    const hbsObject = { 
+        user : req.session.user,
+        employee: req.session.employee
+    }
+    return res.render("employeelogin",hbsObject);
 })
 
 router.get('/login', (req, res) => {
-    return res.render("userlogin");
+    const hbsObject = { 
+        user : req.session.user,
+        employee: req.session.employee 
+    }
+    return res.render("userlogin",hbsObject);
 })
 
 module.exports = router;
