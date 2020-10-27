@@ -8,75 +8,87 @@ var db = require("../models/");
 
 //Get all sixpacks from the DB
 router.get('/sixpacks', function (req, res) {
-    db.Sixpack.findAll().then(sixpack => {
-        res.json(sixpack)
-        const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
-        var hbsObject = { 
-            sixpack: dbSixpackJson,
-            user : req.session.user,
-            employee: req.session.employee
-             };
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
-    })
-})
+    if (!req.session.employee) {
+        res.redirect("/employeelogin");
+    } else {
+        db.Sixpack.findAll().then(sixpack => {
+            res.json(sixpack)
+            const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
+            var hbsObject = {
+                sixpack: dbSixpackJson,
+                user: req.session.user,
+                employee: req.session.employee
+            };
+            console.log(hbsObject)
+            return res.json(hbsObject);
+            // return res.render("index", hbsObject);
+        });
+    };
+});
 
 //Get the current sixpack in user session
 router.get("/user/sixpack/", function (req, res) {
-    if(req.session.user && req.session.sixpack){      
-    db.Sixpack.findAll({
-        where: {
-            id: req.session.sixpack.id
-        },
-        include: {
-            model: db.Beer,
-            include: [db.Rating,db.Brewery,db.Style]
-        }
-    }).then(sixpack => {
-        //res.json(sixpack[6])
-        const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
-        // const dbBeerJson = sixpack[5].map(beer => beer.toJSON());
-        var hbsObject = { 
-            sixpack: dbSixpackJson,
-            user : req.session.user,
-            employee: req.session.employee
-        };
-        // return res.json(hbsObject);
-        return res.render("sixpack", hbsObject);
-    })
-} else {
-    res.redirect("/user/sixpacks/")
-}
+    if (req.session.user && req.session.sixpack)
+     {
+        db.Sixpack.findAll({
+            where: {
+                id: req.session.sixpack.id
+            },
+            include: {
+                model: db.Beer,
+                include: [db.Rating, db.Brewery, db.Style]
+            }
+        }).then(sixpack => {
+            //res.json(sixpack[6])
+            const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
+            // const dbBeerJson = sixpack[5].map(beer => beer.toJSON());
+            var hbsObject = {
+                sixpack: dbSixpackJson,
+                user: req.session.user,
+                employee: req.session.employee
+            };
+            console.log(hbsObject)
+            // return res.json(hbsObject);
+            return res.render("sixpack", hbsObject);
+        })
+    } else {
+        res.redirect("/user/sixpacks/");
+    }
 })
 
 // Get all sixpacks associated with a logged in user
 router.get("/user/sixpacks/", function (req, res) {
-    db.Sixpack.findAll({
-        where: {
-            UserId: req.session.user.id
-        },
-        include: {
-            model: db.Beer,
-            include: [db.Rating,db.Brewery,db.Style]
-        }
-    }).then(sixpack => {
-        const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
-        var hbsObject = { 
-            sixpack: dbSixpackJson,
-            user : req.session.user,
-            employee: req.session.employee,
-         };
-        //return res.json(hbsObject);
-        return res.render("sixpacks", hbsObject);
-    })
+    if (!req.session.user && !req.session.sixpack) {
+        res.redirect("/login")
+    } else {
+        db.Sixpack.findAll({
+            where: {
+                UserId: req.session.user.id
+            },
+            include: {
+                model: db.Beer,
+                include: [db.Rating, db.Brewery, db.Style]
+            }
+        }).then(sixpack => {
+            const dbSixpackJson = sixpack.map(sixpack => sixpack.toJSON());
+            var hbsObject = {
+                sixpack: dbSixpackJson,
+                user: req.session.user,
+                employee: req.session.employee,
+            };
+            console.log(hbsObject)
+            //return res.json(hbsObject);
+            return res.render("sixpacks", hbsObject);
+        })
+    }
 })
 
 // Switch to new sixpack and view sixpack
 router.get('/user/sixpacks/:id', function (req, res) {
-        req.session.sixpack = {
-            id: req.params.id
-        }
-        res.redirect("/user/sixpack");
+    req.session.sixpack = {
+        id: req.params.id
+    }
+    res.redirect("/user/sixpack");
 })
 
 
@@ -145,7 +157,7 @@ router.delete("/sixpacks/:id", function (req, res) {
         if (deleteSixpack === 0) {
             res.status(404).json(deleteSixpack)
         } else {
-            
+
             res.status(200).json(deleteSixpack)
         }
     }).catch(err => {
