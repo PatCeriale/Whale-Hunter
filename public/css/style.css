@@ -81,17 +81,17 @@ body {
 }
 
 .whale-logo {
-    background: url(http://res.cloudinary.com/crowandrew/image/upload/v1603654823/TestProject/ocziao1txu2xrumrkigx.png);
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 140px;
-    min-height: 125px;
-    position: relative;
-    overflow: hidden;
-    margin-left: 40%;
-    margin-right: 60%;
+  background: url(http://res.cloudinary.com/crowandrew/image/upload/v1603654823/TestProject/ocziao1txu2xrumrkigx.png);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  min-height: 125px;
+  position: relative;
+  overflow: hidden;
+  margin-left: 40%;
+  margin-right: 60%;
 }
 
 .whale-box {
@@ -103,4 +103,9 @@ body {
 .beer-description {
   overflow-y: scroll;
   height: 20vh;
+}
+.post-description {
+  overflow-y: scroll;
+  height: 15vh;
+  word-wrap: break-word;
 }
