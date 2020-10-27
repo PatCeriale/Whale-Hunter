@@ -37,6 +37,14 @@ hbs.handlebars.registerHelper('newDate', function(dateTime) {
   return moment(dateTime).format('D MMM YYYY @ H:mm');
 });
 
+hbs.handlebars.registerHelper('adjustCloudinary', function(str) {
+  const linkBeginning = str.substring(0,50);
+  const addParams = "w_300,h_200,c_fill,f_png"
+  const linkEnd = str.substring(49);
+  const newString = linkBeginning + addParams + linkEnd;
+  return new hbs.handlebars.SafeString(newString)
+});
+
 const session = require("express-session");
 
 app.use(
