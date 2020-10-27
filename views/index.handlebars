@@ -1,13 +1,14 @@
+<p style="margin-left: 2%;"><b> whale</b> [/(h)wāl/] <i>noun</i>: a <b>rare</b>, <b>sought after</b> craft beer</p>
 <section class="section mb-0 pb-0">
     <div class="container is-clipped mb-0 pb-0">
-        <h1 class="title">Popular</h1>
+        <h1 class="title">Popular Breweries</h1>
 
         <div id="slider">
             <div class="card">
 
                 <div class="card-content carousel-card-content">
                     <div class="item__title carousel-title" style="text-align: center;">
-                        <a href="#">Georgetown Brewing Company</a>
+                        <a href="/breweries/1">Georgetown Brewing Company</a>
                     </div>
                     <div class=" item__description">
                         <br> Georgetown Brewing Company is the largest independent brewery in Washington State maker of
@@ -26,7 +27,7 @@
 
                 <div class="card-content carousel-card-content">
                     <div class="item__title" style="text-align: center;">
-                        <a href="#">Old Stove Brewing</a>
+                        <a href="/breweries/2">Old Stove Brewing</a>
                     </div>
                     <div class="item__description">
                         <br> Old Stove Brewing Co in Seattle, WA is a taproom and brewery offering 16 craft beers and a
@@ -46,7 +47,7 @@
 
                 <div class="card-content carousel-card-content">
                     <div class="item__title" style="text-align: center;">
-                        <a href="#">Elysian Brewing Company</a>
+                        <a href="/breweries/3">Elysian Brewing Company</a>
                     </div>
                     <div class="item__description">
                         <br> Elysian Has Brewed Over 350 Craft Beers Since it Opened on Capitol Hill in 1996. Crafted in
@@ -65,7 +66,7 @@
 
                 <div class="card-content carousel-card-content">
                     <div class="item__title" style="text-align: center;">
-                        <a href="#">Four Generals Brewing</a>
+                        <a href="/breweries/4">Four Generals Brewing</a>
                     </div>
                     <div class="item__description">
                         <br> The brainchild of Ross Hudspeth Emphasizes "well-balanced beers" like a red ale,
@@ -85,7 +86,7 @@
 
                 <div class="card-content carousel-card-content">
                     <div class="item__title" style="text-align: center;">
-                        <a href="#">Dubtown Brewing Company</a>
+                        <a href="/breweries/5">Dubtown Brewing Company</a>
                     </div>
                     <div class="item__description">
                         <br> Made with love in Downtown Renton.
@@ -105,7 +106,7 @@
 
                 <div class="card-content carousel-card-content" style="bottom: 0%;">
                     <div class="item__title" style="text-align: center;">
-                        <a href="#">Mac & Jack's Brewery</a>
+                        <a href="/breweries/6">Mac & Jack's Brewery</a>
                     </div>
                     <div class="item__description">
                         <br> Brewery with a passion for good beer and the
@@ -125,7 +126,7 @@
 <!-- ///////////////////////// Trending 6 pack container/////////////////////////////// -->
 <section class="section mt-0 pt-0">
     <div class="container mt-0 pt-0">
-        <div class="columns is-centered is-multiline is-flex-wrap-wrap" style="padding: 2rem">
+        <div class="columns is-centered is-multiline is-flex-wrap-wrap" style="padding-top: 2rem">
             {{#each post}}
             <div class="column is-one-quarter">
                 <div class="card">
@@ -145,7 +146,7 @@
                             <p>{{this.description}}
                                 <a href="#">#{{this.beer_name}}</a> <a href="#">#{{this.brewery_name}}</a>
                                 <br>
-                                <time datetime="{{this.createdAt}}">{{this.createdAt}}</time>
+                                <time datetime="{{this.createdAt}}">{{newDate this.createdAt}}</time>
                             </p>
                         </div>
                     </div>

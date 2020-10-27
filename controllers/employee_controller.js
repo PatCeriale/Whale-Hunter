@@ -8,17 +8,21 @@ var db = require("../models/");
 
 //Get all employees from the DB
 router.get('/employees', function (req, res) {
-    db.Employee.findAll().then(employee => {
-        res.json(employee)
-        const dbEmployeeJson = employee.map(employee => employee.toJSON());
-        var hbsObject = { employee: dbEmployeeJson };
-        console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
-    })
-  })
+    if (!req.session.employee) {
+        res.redirect("/employeelogin")
+    } else {
+        db.Employee.findAll().then(employee => {
+            res.json(employee)
+            const dbEmployeeJson = employee.map(employee => employee.toJSON());
+            var hbsObject = { employee: dbEmployeeJson };
+            console.log(hbsObject)
+            return res.json(hbsObject);
+            // return res.render("index", hbsObject);
+        })
+    };
+})
 
-  //Get one employees from the DB
+//Get one employees from the DB
 router.get('/employees/:id', function (req, res) {
     db.Employee.findOne({
         where: {
@@ -29,10 +33,10 @@ router.get('/employees/:id', function (req, res) {
         return res.json(hbsObject);
         // return res.render("index", hbsObject);
     })
-  })
-  
-  //create new employee
-  router.post('/employees', function (req, res) {
+})
+
+//create new employee
+router.post('/employees', function (req, res) {
     db.Employee.create({
         user_name: req.body.user_name,
         password: req.body.password,
@@ -40,16 +44,15 @@ router.get('/employees/:id', function (req, res) {
         last_name: req.body.last_name,
         active: req.body.active
     }).then(newEmployee => {
-        console.log(newEmployee)
         res.redirect("/admin");
     }).catch(err => {
         console.log(err)
         res.status(500).json(err);
     })
-  })
-  
-  //Delete employee
-  router.delete("/employees/:id", function (req, res) {
+})
+
+//Delete employee
+router.delete("/employees/:id", function (req, res) {
     db.Employee.destroy({
         where: {
             id: req.params.id
@@ -65,7 +68,7 @@ router.get('/employees/:id', function (req, res) {
         console.log(err);
         res.status(500).json(err);
     })
-  })
+})
 
 
 module.exports = router;

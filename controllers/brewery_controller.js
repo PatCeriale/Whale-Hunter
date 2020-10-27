@@ -9,14 +9,12 @@ var db = require("../models/");
 //Get all breweries from the DB
 router.get('/breweries', function (req, res) {
     db.Brewery.findAll().then(brewery => {
-        console.log(brewery);
         const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
         var hbsObject = { 
             brewery: dbBreweryJson,
             user : req.session.user,
             employee: req.session.employee
          };
-        console.log("Brewery hbsObject", hbsObject);
         return res.render("breweries", hbsObject);
     })
 })
@@ -59,7 +57,6 @@ router.get("/breweries/:city", function (req, res) {
         res.json(brewery)
         const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
         var hbsObject = { brewery: dbBreweryJson };
-        console.log(hbsObject)
         return res.json(hbsObject);
         // return res.render("index", hbsObject);
     })
@@ -80,12 +77,7 @@ router.post('/breweries/', function (req, res) {
         description: req.body.description,
         image: req.body.image
     }).then(newBrewery => {
-        res.json(newBrewery)
-        const dbBreweryJson = brewery.map(brewery => brewery.toJSON());
-        var hbsObject = { brewery: dbBreweryJson };
-        console.log(hbsObject)
-        return res.json(hbsObject);
-        // return res.render("index", hbsObject);
+        res.redirect("/admin");
     }).catch(err => {
         console.log(err)
         res.status(500).json(err);

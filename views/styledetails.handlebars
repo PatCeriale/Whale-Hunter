@@ -1,5 +1,10 @@
 <section class="section">
-    <h1 class="title">Beers</h1>
+    <h1 class="title">{{style.name}}</h1>
+    <div class="block">
+        <p class="beer-description">{{style.description}}</p>
+    </div>
+
+
     <div class="columns is-centered is-multiline is-flex-wrap-wrap">
         {{#each beer}}
         <div class="column is-one-third">
@@ -13,7 +18,8 @@
                     <div class="media">
                         <div class="media-content">
                             <p class="title is-4"><a href="/beers/{{this.id}}">{{this.name}}</a></p>
-                            <p class="subtitle is-6"><a href="/beers/styles/{{this.Style.id}}">{{this.Style.name}}</a></p>
+                            <p class="subtitle is-6"><a href="/beers/styles/{{this.Style.id}}">{{this.Style.name}}</a>
+                            </p>
                         </div>
                     </div>
                     <div class="content">
@@ -21,9 +27,7 @@
                             <div class="level-left">
                                 <div class="level-item px-0 mx-0">
                                     <figure class="image is-24x24 px-0 mx-1">
-                                        <img class="ahab is-clickable"
-                                            src="/images/ahab.png"
-                                            data-index={{this.id}}>
+                                        <img class="ahab is-clickable" src="/images/ahab.png" data-index={{this.id}}>
                                     </figure>
                                 </div>
                                 <div class="level-item">
@@ -42,13 +46,11 @@
 
                         </div>
                     </div>
-                    {{#if ../user}}
                     <footer class="card-footer">
                         <button class="add-six-pack card-footer-item button is-black is-medium is-fullwidth"
                             value={{this.id}}>Add
                             To Six Pack</Button>
                     </footer>
-                    {{/if}}
                 </div>
             </div>
         </div>
