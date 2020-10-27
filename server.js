@@ -60,6 +60,7 @@ const profile = require("./controllers/profile_controller.js");
 const rating_routes = require("./controllers/rating_controller.js");
 const sixpack_routes = require("./controllers/sixpack_controller");
 const style_routes = require("./controllers/style_controller.js");
+const styledetails_routes = require("./controllers/styledetails_controller.js");
 
 app.use(admin_routes);
 app.use(authPost_routes);
@@ -71,6 +72,7 @@ app.use(profile);
 app.use(rating_routes);
 app.use(sixpack_routes);
 app.use(style_routes);
+app.use(styledetails_routes);
 
 
 var PORT = process.env.PORT || 8080;

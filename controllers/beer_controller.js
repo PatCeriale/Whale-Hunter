@@ -45,12 +45,20 @@ router.get("/beers/styles/:id", function (req, res) {
     })
         .then(function (dbBeers) {
             const dbBeersJson = dbBeers.map(beer => beer.toJSON());
-            var hbsObject = { 
-                beer: dbBeersJson,
-                user : req.session.user,
-                employee: req.session.employee
-             };
-            return res.render("beers", hbsObject);
+            db.Style.findOne({
+                where: {
+                    id: req.params.id
+                }
+            }).then(function(style) {
+                const dbStyleJson = style.toJSON();
+                var hbsObject = {
+                    beer: dbBeersJson,
+                    style: dbStyleJson,
+                    user : req.session.user,
+                    employee: req.session.employee
+                 };
+                 return res.render("styledetails", hbsObject);
+            })
         });
 });
 
