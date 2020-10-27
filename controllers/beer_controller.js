@@ -7,7 +7,11 @@ var db = require("../models/");
 //================================================================================
 //Basic redirect route. May change later.
 router.get("/", function (req, res) {
-    db.Post.findAll()
+    db.Post.findAll({
+        order: [
+          ['id', 'DESC']
+        ]
+    })
         .then(function (dbPosts) {
             const dbPostsJson = dbPosts.map(post => post.toJSON());
             var hbsObject = { 
